@@ -1,0 +1,3350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>W.U.T.?.6.12</title>
+<style>
+
+  :root {
+    --optimal: #2d7d46;
+    --optimal-bg: #e8f5e9;
+    --moderate: #c79100;
+    --moderate-bg: #fff8e1;
+    --noxious: #c62828;
+    --noxious-bg: #ffebee;
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #212121;
+    --muted: #757575;
+    --border: #e0e0e0;
+    --shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Comic Sans MS', 'Chalkboard', 'Marker Felt', 'Segoe Print', 'Bradley Hand', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+}
+
+  /* Main Cover */
+  .cover {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+    padding: 60px 20px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover h1 {
+    font-size: 4rem;
+    margin-bottom: 12px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-align: center;
+    font-family: 'Comic Sans MS', 'Chalkboard', 'Marker Felt', 'Segoe Print', 'Bradley Hand', sans-serif;
+  }
+  .cover .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 32px;
+    font-weight: 500;
+    text-align: center;
+  }
+  .cover .fine-print {
+    font-size: 0.72rem;
+    opacity: 0.55;
+    margin-top: 28px;
+    line-height: 1.6;
+    text-align: center;
+  }
+  .cover .fine-print em { opacity: 0.8; }
+  .cover-btns {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+  .cover-btns a {
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 24px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.4);
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+  }
+  .cover-btns a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+  }
+  .cover-btns .to-o { background: rgba(139,0,0,0.7); }
+  .cover-btns .to-a { background: rgba(27,94,32,0.7); }
+  .cover-btns .to-b { background: rgba(13,71,161,0.7); }
+  .cover-btns .to-ab { background: rgba(74,20,140,0.7); }
+
+  /* Blood Type Cover */
+  .bt-cover {
+    padding: 40px 20px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .bt-cover::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 1;
+  }
+  .bt-cover > * { position: relative; z-index: 2; }
+  .bt-cover h2 { font-size: 2.4rem; font-weight: 800; margin-bottom: 8px; font-family: 'Comic Sans MS', 'Chalkboard', 'Marker Felt', 'Segoe Print', 'Bradley Hand', sans-serif; }
+  .bt-cover .tagline { font-size: 1.1rem; opacity: 0.9; font-style: italic; }
+  .bt-cover .stats {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .bt-cover .stat { text-align: center; }
+  .bt-cover .stat-num { font-size: 1.6rem; font-weight: 700; }
+  .bt-cover .stat-label { font-size: 0.75rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 1px; }
+
+  .bt-o { background: linear-gradient(135deg, #8B0000 0%, #CD5C5C 100%); }
+  .bt-a { background: linear-gradient(135deg, #1b5e20 0%, #4caf50 100%); }
+  .bt-b { background: linear-gradient(135deg, #0d47a1 0%, #42a5f5 100%); }
+  .bt-ab { background: linear-gradient(135deg, #4a148c 0%, #ab47bc 100%); }
+
+  /* Intro text */
+  .intro-box {
+    background: var(--card);
+    margin: 20px;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+  }
+  .intro-box h3 { font-size: 1.1rem; margin-bottom: 12px; color: var(--text); font-family: 'Comic Sans MS', 'Chalkboard', 'Marker Felt', 'Segoe Print', 'Bradley Hand', sans-serif; }
+  .intro-box p { font-size: 0.95rem; color: var(--muted); margin-bottom: 12px; }
+/* Quick Lookup Legend */
+/* Category Cards */
+  .category {
+    background: var(--card);
+    margin: 16px 20px;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .category-header {
+    justify-content: center;
+    text-align: center;
+    padding: 16px 20px;
+    background: #f5f5f5;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .category-header .icon { font-size: 1.3rem; }
+
+  /* Food Groups */
+  .food-group { padding: 16px 20px; border-bottom: 1px solid var(--border); }
+  .food-group:last-child { border-bottom: none; }
+  .food-group h4 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .food-group.optimal h4 { color: var(--optimal); }
+  .food-group.moderate h4 { color: var(--moderate); }
+  .food-group.noxious h4 { color: var(--noxious); }
+
+  .food-tags {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .food-tag {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+  .food-group.optimal .food-tag { background: var(--optimal-bg); color: var(--optimal); border: 1px solid #c8e6c9; }
+  .food-group.moderate .food-tag { background: var(--moderate-bg); color: #8d6e00; border: 1px solid #ffe082; }
+  .food-group.noxious .food-tag { background: var(--noxious-bg); color: var(--noxious); border: 1px solid #ffcdd2; }
+
+  /* Section anchors */
+  section { scroll-margin-top: 70px; }
+
+  /* Back to top */
+/* Print styles */
+  @media print {
+}
+
+  /* Centered app wrapper */
+  .app-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .intro-box {
+    text-align: center;
+  }
+  .intro-box p {
+    text-align: center;
+  }
+  .category {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 860px;
+  }
+.jump-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 0 10px;
+  }
+  .jump-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 24px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.4);
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+  }
+  .jump-btn:hover {
+    background: rgba(255,255,255,0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .bt-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 3;
+  }
+  .bt-toggle a {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 14px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.35);
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+  }
+  .bt-toggle a:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+  }
+  .bt-toggle .to-o { background: rgba(139,0,0,0.65); }
+  .bt-toggle .to-a { background: rgba(27,94,32,0.65); }
+  .bt-toggle .to-b { background: rgba(13,71,161,0.65); }
+  .bt-toggle .to-ab { background: rgba(74,20,140,0.65); }
+</style>
+</head>
+<body>
+<div class="app-wrapper">
+
+<!-- Sticky Nav -->
+<!-- Main Cover -->
+<div class="cover">
+  <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAABJsUlEQVR4nO3deXxdVbn/8We3mZo0c5rhNEOTtEnTNp1b2lLaIlDQi1eKqAxeERClCCrIIFeviHqvMwoIKOgFuVDBH+AAioBIoQU60ZYOaZM0Q9vMzTxPZf/+SFOTfdZOzsk5Jzln5fN+vXzZ7CT77KbhfPde61nPMkzTFAAAENimTPQFAAAAzxHoAABogEAHAEADBDoAABog0AEA0ACBDgCABgh0AAA0QKADAKABAh0AAA0Q6AAAaIBABwBAAwQ6AAAaINABANAAgQ4AgAYIdAAANECgAwCgAQIdAAANEOgAAGiAQAcAQAMEOgAAGiDQAQDQAIEOAIAGCHQAADRAoAMAoAECHQAADRDoAABogEAHAEADBDoAABog0AEA0ACBDgCABgh0AAA0QKADAKABAh0AAA0Q6AAAaIBABwBAAwQ6AAAaINABANAAgQ4AgAYIdAAANECgAwCgAQIdAAANEOgAAGiAQAcAQAMEOgAAGiDQAQDQAIEOAIAGCHQAADRAoAMAoAECHQAADRDoAABogEAHAEADBDoAABog0AEA0ACBDgCABgh0AAA0QKADAKABAh0AAA0Q6AAAaIBABwBAAwQ6AAAaINABANAAgQ4AgAYIdAAANECgAwCgAQIdAAANEOgAAGiAQAcAQAMEOgAAGiDQAQDQAIEOAIAGCHQAADRAoAMAoAECHQAADRDoAABogEAHAEADBDoAABog0AEA0ACBDgCABgh0AAA0QKADAKABAh0AAA0Q6AAAaIBABwBAAwQ6AAAaINABANAAgQ4AgAYIdAAANECgAwCgAQIdAAANEOgAAGiAQAcAQAMEOgAAGiDQAQDQAIEOAIAGCHQAADRAoAMAoAECHQAADRDoAABogEAHAEADBDoAABog0AEA0ACBDgCABgh0AAA0QKADAKABAh0AAA0Q6AAAaIBABwBAAwQ6AAAaINABANAAgQ4AgAYIdAAANECgAwCgAQIdAAANEOgAAGiAQAcAQAMEOgAAGiDQAQDQAIEOAIAGCHQAADRAoAMAoAECHQAADRDoAABogEAHAEADBDoAABog0AEA0ACBDgCABgh0AAA0QKADAKABAh0AAA0Q6AAAaIBABwBAAwQ6AAAaINABANAAgQ4AgAYIdAAANECgAwCgAQIdAAANEOgAAGiAQAcAQAMEOgAAGiDQAQDQAIEOAIAGCHQAADRAoAMAoAECHQAADRDoAABogEAHAEADBDoAABog0AEA0ACBDgCABgh0AAA0QKADAKABAh0AAA0Q6AAAaIBABwBAAwQ6AAAaINABANAAgQ4AgAYIdAAANECgAwCgAQIdAAANEOgAAGiAQAcAQANBE30BAPzL6nPOMWtqakREJDU1VaKioyUqKkoip0+XqKgomZmaKmlpaeJwOCQ5OVkSEhIkKjramODLBiY9wzTNib4GAH6i5Ngx88ILLnD7++Li4iR37lzJysyUzKwsSc/IkNTUVEmdOdOIjIrywZUCsOIJHcBZhw8fHtP3NTY2ynvvvivvvfuu9VPm7DlzZMWKFZKbmys5OTmSMWuWOBwOnzzRFxcXm329vRIUHCyhoaESFhYmoaGhEhoaakybNs0XLwn4DQIdAauttVWqa2rMqspKqaqqkvLycll73nmybt06hn/HaP++fV4/57HiYjlWXDzsWFJSkrl6zRpZvHix5OTkyJw5cyRhxgyP/t16e3pk44UX2n3aFBFxOBySmJgo8fHxEhMTIzGxsRIdHS3RZ6YVYmJi/vVxdLQkJCTwu4SAwZA7/FpPT49UVVWZVZWVUllZKSdOnJCysjI5fOiQHD9+3Onrg4KC5De//a2s37CBN+IxuPCCC8ySY8cm5LUzMzNlzbnnyrx58yQ7O1sys7IkMTHR5X/HwsJC85KNG71+XcnJyZKamiopKSkSfSbwB4M/MjJy4H9RUTJ9+nSJioyUiOnTGQ3AhCDQMeH6+vqktqbGrKyqksrKSjl5JrSLCgvlyJEjbp+PUB+b2tpac9XKlU7HN5x/vsTGxorIwFNwQUGBlJWVjcs1paalycoVK2T+ggUye84cycrMlNS0NOW/68svv2ze+uUvj8t1uWLevHmSmJQkM2bMODsiEB8fL9ExMRIbGysxZ24MPB2ZAAYR6BhXH3zwgXni+HE5efKklJeXS+HRo3LgwAGfvNYjjz4qH/3Yx3izdNFbW7ean7/2Wqfju/fscQqdzs5OqaysNGtra6W2tlaqz9yMFR49Kvt8MGw/1IzERDn33HNl/vz5kpObezbkf/bTn5q/fOghn762r+Tl5UleXp5kZmVJRkaGpKWlSUJCgiQmJhohoaETfXkIEAQ6fK63p0dee+0185GHHx7TE7cnfv/ss7Jq9WpC3QW/fOgh82c//emwY7m5ufL3115z6+fX29MjFZWVZsWZm7ajR4/K7t27nebRvSk5OVk+/PBDqaurO3vs0ksvlTXnnnv2Y1MG6i5aW1ulpblZWlpapL6hQU6dOiUTNc3gitS0NMnOypK09HTJyMiQ5JQUmelwSHJKiqSkpPC7jbMoioNP/flPfzIfeuihCXvDfPXVV2XV6tUT8tqBZveuXU7Hzlu3zu3zhISGSlZWlpGVlSXr1q8/e7yxsdEsLyuTkpISKS4uliMFBbJ9+3aPrnnQ4Lr5obZv2yZBwcGycNEimTNnjsyePVuSk5NtA7C9vV1aW1vNwcBvbm6WpqYmaW5uloaGBmloaJDGMzcABQUFXrluV1ScPCkVJ0/afdpcv2GDzMvLk9y5cyUnJ0fy5s0j5CcpntDhU1d95jPmjh07vHKuNeeeK1lZWZKamioOh0NSU1MlMTFRZqamGhUnT5rXXXed01Ng9uzZ8o833uANbhSdnZ0yPy/P6c3gwYceko//+7/79Od34sQJ8/jx41JWWipHjhyR3bt3u30DaIqI9SJN0xTDGH40NS1NVp1zjuQvXCgLFiyQefPnG2FhYWO67p6eHmlrazPb29ulo71d2trapLW1Vdra2qSpqUmampqksbFRTtXVSW1dnRw6eHBMrzMWV1xxhaw97zy5+JJLxvz3Q+Ah0OFT3/rmN81nnn7apa/NysqSuXl5kp6eLmlpaZKSkiLJKSmSlJQkcXFxo4bK3vffNz95+eVOx7dt325bSIUB+/buNS/ftMnp+D/eeEOyZ88e959dfX29WV5eLkVFRXL0yBF5f8+ekZ+KTVPEEt6qQFfZePHFsmLFClmyZInkzZtnhIeHe3r5tjo6OqSlpcVsOfP039TcLI0NDVJXV3e2FqG8vFwqKiq88no7du2SpKQkfvcnCYbc4VOzZs1yOpaeni6f+vSnZebMmZKSkiJJycmSkpLi8ZPEvPnzDTmz3niogoICSU1L8+jcgeLgwYPm66+9JsePH5eWlhZpb2+XlpYWaW5qkvr6ehEZaOcaGRkp4REREhEeLtPCw+XUkLnnQbGxsW4tG/OmhIQEIyEhQZYvX372WGtLi3ns2DEpKiqSgoKCYSFvfUJ3NcxFRF579VV57dVXz37r+g0b5Nwzy+dycnJkhhd/BhERERIREWE4HI4Rv66jo0NOHD9ulpSUSGlpqZSVlUlDfb3U19e7VYcSTUveSYUndPjU3195xdx8003DjqWmpcm27dt98kbzpRtvNF977bVhxzbffLPcdffd2r6xVVZWmv94/XV5/vnnxzysqwrAwWOr16yRO+64Q5YuW+Z3P8PWlhazpKREfvSjH8nOoVM7iif2scrNzZXVa9bIgvx8yZs7V2bPnj3hlectLS1mZUWFHD9+XMrLy2X/vn1i/b0XESk7ftzv/s3gOzyhT1J1dXVmcVGRZGZl+awNp4hIiuJJpOLkSWlpaTF98fSwfMUKpze2d7ZvF7n7bm+/lF/43ZNPmt+5916fvsZ7774rX/riF2Xr229LRESET1/LXVHR0caSpUulp7t72JPJ52+4QXLmzJGDBw/Kzh07pLS0dMyvUVhYKIWFhUMPmRdeeKFc+vGPyycuu2xCAjM6OtqIjo6WefPnnz32+uuvm1/8whfOfrx48eIJuDJMJAJ9Eujo6JDioiLz6NGjcujQIdm5c+fZ4rGf/+IXcpli7tRbHCkpyuNVVVUSHR3t9dfLz893OnbgwAFpbGw0XZmHDzTt7e0en8OV4en6+np5+623TH9c19/T0yP79+8fdmz9unWy4fzzjavOfHyqrs4sLS2VgiNH5NCBA/L222+fnYIYi3/84x8SFx8vn7jssjGfw9vKLc1+EpOSJuhKMFEIdM309vZKaWmpWXxmnnHP7t2yZ88e268/cuSITwN9RmKiERYWZnZ3dw87XllZKXl5eV5/vZzcXOXxosJCLZeveaOC2S6hrcerq6s9fi1fOHnihNO8YXp6+rCPZyQmGjMSE+WcVavOHjt+/LhZVFgohw4dkg8++EDe2rrVrded7mejFU2NjcM+TkxMnKArwUQh0ANceXm5Obim99DBg/L666+79f2+2IzDavny5U7rjSu9VMVrFRcXZyzIzzetc8kFBQVaBrpdz/B169bJx/7t3yQ6OlrCIyIkPDxcwqdNk77+funp6ZGenh7p7u6W7q4ueWf7dnnuueeGfb/qqb3REhj+4qRijXZ6RsaoIwkZGRlGRkaGXHSm/3t3d7cUFhaaR48ckV07d8qLL7444vdH+WCEyROnTp0a9nFCQsIEXQkmCoEeQOrq6syy0lI5dOiQHDp0SN5+6y2P32R37dolHR0dPp0bnTNnjlOgHy8v99nrrVmzxqk4bN/evSI33OCz1+zt7ZXTp09Lf1+f9PX3m6f7+6Wvv1/6+/ulv69P+k+fltP9/RIcHCxhYWESMrClp4SEhHi0kUeo4gl9w/nnyxNPPuny0PjBgwednnBXrlwp7e3twyqqm5uaxnqZPlVu2aRnydKlEhTk/ltbWFiYLFq0yFi0aJF85sor5Qc/+pEUFRaa+/fvl988/rjTZkC+mDLyRJ1lpUJcXNwEXQkmCoHu544UFJjPPP207Ni502fd1spKS80F+fk+mxtNz8hwOlbswzagqnn0l19+WR56+GGn421tbdLc1GQ2NjVJY0ODNDY2Snt7u3R1dZ39X2dn59n/dXd1SUdHh3R2dkprW9tIHbxcZYqInHfeeTJ79myZlZkpn7v2Wpf/LcIVNwONDQ1uXcBBRS/9uIQE2b1797BjLS0tbp13vJSWlAz7eJ6XpnJCQkJkQX6+sSA/X1555RXTGuiRkZFeeR1vqbJMiQxuqIPJg0D3c42NjfLMM8/49DWOHTsmCxQh6C3W+UwR8VrLTxWnuXnTFFNE7vz6183WgQCXhsZGv+rfvW3bNtm2bZuIiHxOsUGKHdUceltbm8vf39vTI6pOfmmKdfv+GujWddnZs2d7/TWsT78i4lcV/6ZpOhXFxRDokw6B7udSbKrEXbFx40ZZumyZzJ07V7KzsyU1Lc34yi23mC+99NKwr/N1YZxj5kzl8ZqaGnOk3tpjdaaz2dlhZNMwxBCR559/3tsv5RPNzc1mTEyMSz+XUMV6aHe2Ni0/flzZiGKW4iasubnZ5fOOl/7+fnnfUvSpGhHylDUsRUSm+9ETemtrq9nf3z/sWGxMzMRcDCYMge7nUgbWiI/a/Wf58uWyYsUKmbdggeTm5kpmZqahmkecv2CBWAP9/fff99r1qtjdlFRWVEhycrJPXnPjxRef7f5leLHJyHhob2uTGBffjFWBLiJy+vRpmTp16qjfbx2uFhkYSlbdhDX5YaBXVFQ4/behGl3wRFdXl1jDUsS/htxVoyf+NscP3yPQ/dy0adMkJydHioqKhh1fvWaNXPrxj0ve3LmSk5truDr8p1oq9v6ePT4tjIuOjjZS09JM63xzRUWFLBvS2tOblixZMrSdZ0Bpc2Ntud2ytZ6eHnGlJ7mqluG8deuU36tqDzvRVD3PZ86c6dW7t9bWVuUNdVRUlDdfxiM2gR44d7HwCgI9AMzNy3MO9NWr5eqrr3b7P9js7Gzl8dLSUjPfh4Vx+fn5TgVk1iIjb8odsh5dtROXSlZWlqRnZMiMGTPOLvOaFh4u06ZNk/CICAkNCZHQ0FAJDQv7158HKtVdvq7BZWPd3d3S090t373vPqdQ6uzocPl8doHe19fn0l/78OHDTsfmz58v0xSB3tPT4/J1jZcTlt+hvLw8r9+YtrW2Ko/7U6CrpkMi/ej6MD4I9ACg2uDEnXnSoRwzZxoJCQmmtUtWUVGRsjrcWzIzM52OHfNhUdqcOXNG/HxmZqZ85777JHFgJ7cJ24TkO/fe6/T019nV5fL32w25d3d3uzTkap1/FhGZk5Nju769ra3Nr4aaS6wV7vPmef017IoM4+Pj/eYJ2NpUxhc/B/i/KRN9ARidqsjHuu+3qwzDkHPXrnU6Xnj06JjO56oMHxQqjSQ1Lc1IGqH1ZXBwsKxbv96YO3euMVFhLiLKufJ2N6rU7TYJsXbmU2lsbHS6sRMZ2I3NbtTB2jN9ohUN77Eus0e5kRsL1XD2SL9bE6HBEugzbQpRoTcCPQDMVGxwcvDgQekd4xCo6kl8pPaw3pChGGV46S9/kZaWFp8FxEid4dx5CvYl1dKizs5Ol7/f7gndleHxqspK5XGHwzHi3Ly/ME3Taa28L24cVYFut3JjotRbusTRx31yItADQLJNlXh1Tc2YwlA1HL1v7163gsRdqmkDkbFPHbhi/pCdqKzcmaf2JdWweIcb1xYaGqocXXDlCV1VUJacnCzR0dGGJzcK46Wqqsq0Xo+q54GnmhQd8vytT3pdbe2wj2fMmDFBV4KJRKAHALuq3eqqqjGdz67xRnFxsc+elpOSkowZijdB6xyoN+Xk5Nh+zl/6kqs6vblzY+XJk/SJEyecji1ZulREPLtRGC+qLn2pXl6yJqL+XfG3wKy1BDp93CcnAj0ABAcHK4tcKscY6DMHCuOcjo91Xt5VqxVD4MWW6n1vGqzot5sgV60tHm8R06c7HetyczpA9W/pSvCqRkcGf2a2c+h+9IRuvSFJSkryyVItVStdfwtM68+CPu6TE4EeIFTbgp5UPGG5SlUYV1BQMObzuUK1Bv6gZRMVb5qZmmpERkbaduXp7e312Wu7KkKxPMzdp2DVPLwr51AVQg5OjUydOlUZCv70hG69IVmxYoVPXkfV9tWf+qSfPn3aaQkogT45EegBQrXsy5P5Z1Vh3F4fd4xTVSC/v2ePz56UDcOQdevW2T6hd/tBxXaYYsi9w43GMiIikYqn/O5RnvL7+vpkn2Lr3NTU1H+dV7E8zZ8C3Tqi5Ise7iIiNTU1Tsf8KdCbGhudfo/p4z45EegBQtXO0pOlZqon/v379/u0MC5LcVPS09Mjx8vLfRasI2064w9P6Kr13h1u/htMVwX6KMFbXV2t/JkPXe6kmg7wp0DfuWvXsI/tCi89Va7Y6tefAlPVktefbjgwfgj0ADFzyJPToMLCQunr6xvT+ew6xhUVFfksXNMzMpTV06U+rHSfM0JhnD+EkyrQ3a3AD1d0RhttHt5uyVrSkM1ypivO6w83QSIi9adOma2W5WTe7uEuMrDiQNVYxp/6pKu6xPlT0xuMHwI9QDhslq6pNqdw6XwOx7gXxgUFBcnKlSudjvtyG9OsrCzbz/lDOKkCvd3NQFfNw48W6CcVFeLLli+X4ODgf12bH7d/VRWE+qLC3a5Pgj/tZGYt2ktNTXVpYx7oh0APEEk224yOdemayMAmHFYFit7e3qQaAvfla6alpRmedFPztVDFsjN3OsWJqJ/QR/u7qfro51pGM1QbtPjDz0zEeQ19aGioT9r3WluqDnJ1e9vxYF1W54sbGwQGAj1ABAcHy8KFC52OV9oMnbpCVRjn661UVU1tduzc6bPXCwoKUi6XE/GPp03VOnK73uF2VE/5oz2hq9agz7LUOExTXJs//MxEnDdlWbVqlRg+2CK3UdFUJigoyK/2Qre277Xbrhj6I9ADiKpRiuqN2ZPzHThwQFp92I41SzF3f6quTmpra332mvMXLFAuXXN3vbcvqAJd1ZlsJMp5+FEK61Rd4lIsLYZV5/WXQLeu8FAVeXqDag16Tm6uT24exqrBco3JtH2dtAj0AJKpmA8u96CgzG6ZT2lp6ZjPOZrZs2cr3wnLfPiadh3jevxg+FhVJKgqchrJWArrrJuaiIgkxMcPvzbFzYa/DLkfOXJk2Me+2vzHGpYi6r0VJpK1wDHBz7rYYfwQ6AFEVcV7xIOla8nJyYZqvs2697o3RUREKLve+fImIjMrS8R0fka3tsucCCNtf+oqZaCPMPrQ1tqq7BcfZwl01eiBPzyh9/X1ySFLQ6JUxSoQb7BueiLifxufWEdb/K2LHcYPgR5AHIong5JjxzwaOj5HUXVuffrxtsWLFzsdO+rD7VuzsrKUA6SedNrzFrtA7+3pcXkKQhW8IzWnaWxqUp47zrJ2WXVt/vCErlpD76vtQmsUN33+1sfd+t8rgT55EegBxDrHOai6qmrM88+qqnNfb6WaO3eu07EP9u/32etNnz5dIqOinI5XVVf77DVdZRvobiypUz2ht40U6IphZBGRhBkzht33qK7NH57QGxR7uCclJflkUls1iuNPgdmo6BIXS9vXSYtADyDJNkvXxrpJi4hIrqKY6NDBgz4tjJutmLs/cOCAW9uGumuG4k3YkyV/3uKNTVDcrZSvVxV6KeoMVOcdraXseGiwLNOKiIjwWdW5qujUn/qkq5bV+dP1YXwR6AFkypQpsmz5cqfjlYqKZVepqs5FfLutqXV51KDysjKf3USotm715EbIW7yx77gy0Ftbbb9eNS+sqs9QXZs/rAywhlh2drZPqs57e3qUW7T6U2Bab25ERBISEvynBB/jikAPMKonKVXXL1clJSWNe2FcSkqKEaVonenLwjhVIVN1VdWEDyGHhIQo33x73BhyV1Wjj1Twd0oR6MmKtcuqQB+p2G68WJfk+aqRim2tgaV4cCJZpx8yMzPpEjeJEegBJj093emYp0/TqsYrvtxK1TAMWavYvrXYh21nU5KTlcdPnDgxoTuuhdoMubszh656QhcZeMJUqVOEfZLihkfVYa/Lh5v3jFWYzSiHp+y6xPnTxifWm7N0Hy3fQ2Ag0AOMKtAPHzrk0Tnnz5/vdGzP7t0enXM0qr3RD/uwBazqCdQQz9bxe4NdW1p3At3dYXvVVIOqcls1v+/L3fjGylejLKpag6CgIImNjfWbIW3rXu3+tkYe44tADzCqXdcqKio8KmJTFcYVFBT4tDBO1QL2ne3bxVSsF/eGCEW/c1N8WyvgKtWcrDvLw+ye0Htslr5ZW4WKqHcPU40e+LJw0VXW+XJfLaVTVdNnZWX51ZB2rWWv9iSbkShMDgR6gLHbdc2TJVh2W6n6cghcVYzX09PjsyFw1UYjYhg+X3PvikhFhbY7T+h2lfJ2QWfddlREfVOgOm+L4nvHm3WZXusIBYCesD79iqhHyCaSdbQlUVH8icmDQA8wMxITDdWbr93+1q6ec7wL4zLS08e1BWyYYq22iMjOHTt88nruiJg+3emY3fy3ivJmRUS6bAJdVTCnWsuuCnR3N47xBeu2rrt375bbb7vNvOP2283HH3vMfGf7drO+vt7jG0PVz8nhowY2Y3XMsvUwbV8nt6CJvgC4b8WKFbJt27ZhxzypdBcRWbt2rTz7+98PO+bLwriQ0FBZtWqV7LAEaklJiWw4/3yvv164IrAM05Ta2lppbGw04+LiJmxedPoYtj8dKnzaNEPEef8Z1fB4f3+/cs5ZdZMYPMIaebt5+/Gg+rf844svOh1LTk42Z8+eLTNTUyUlJUWSkpIkLS1NUtPSJCMjY9R/72rFqFeyHw1pt7e3yynLKII/Nb3B+CPQA9Ds2bOdAt26naS7VP3Vd/lwW1MRkfyFC50C/YiPbiJUT6BiGGKappw4cWJC1xZbnzhF3Cv0CgkNldDQUKfvUW3QYnde1dI3u6H83t7eCQ10uxsNq5qaGqmxzDEPYa5YsULm5uVJdna2zExNFUdKiiSnpMjgzZ1qz3h/GtJWjUKoGihh8iDQA1DGrFlOx6xDb+5SbT9ZVFTk06dXVTHe25YbFW9Rheag4+Xlyv7y40X1dOzOHLrIQC9z6zr+DkVFend3t3IoWvmEHhysfK2+vj5TBhYJTIgFCxbIf33727L1zTedbmzdsXv3btmtWM2RkJBgzps3T44UFAwr0jQMw6+egFXFjfE0lZnUCPQApJrvPnDggEfnzFZszSoy0OzFV0+vWYrXPFVXJ6fq6swZiYlefWNSPqHLQCp5ejPkKW/sOx4fH+8c6Ip+7nbnVQW6N9bI+0JsbKxx/Q03yPU33CDd3d1SVFRkFhcXS3lZmRw/flwKjx71qP6jvr5e3n77bRGxVNSbpjz5xBNSVlZmzl+wQHJyciQ6OnrCAtQ63J6enm674gGTA4EegFS7rjU3N0v9qVOmdYMNVyXMmGGkpqWZ1laXRUVFslzRbtYb7FrAlpWXK1u1esIu0EVECn2405srvBHoMTExTsfaFYFuNzevGkK3G9rum+BAHyosLEwWLlxoLFy4cNjxrq4uqaioMCtOnpTjx49LWVmZFBUWOk3xuMUwZOvWrbJ169azh5YsWWKuWrVK8hculLl5eZKZmTluAW+twrdr44zJg0APQKpAFxlYwuJJleu6886TLVu2DDtW4MNmL7GxsUZ6erpp3QCj5NgxWanY1tUT08LClIVjpmHIzl27vPpa7lJ1OnM30KMUu8mpAr3HJtDDBn4+w4ww5O7WtU2EadOmyZw5cwxVv4OqqiqzqqpKKisqpLy8XEpLS2XP7t1SNYbe/vv27ZN9+/ad/TgpKclcu3atLFu+XC648EJJ9PJI01DW6/XVnvAIHAR6AIqOjjZSU1PNCsumLNVVVbJo0aIxn3e+YitVV59odu7cac6bN89Qrakeyblr18oJy02EL5bLqYq+RETENKW1pUVqampMu93sfE01TOqrQLd7Qp8yxXkFa3BwsPImqDcAAn0kDofDcDgcTiNPDQ0NZkVFhZSWlMjLL70kb7zxhog4N7IZSW1trbzwwgvywgsviNxzj3zyk580P3nFFbJ6zRqv/25ZV7b4ak94BA7WoQeoeYp2raqqXHeonmZKjh1T7rls9fBDD8kXrr/ebG5udmv9r6owbu/777tzCpeEhIQoh5UH32U9/dl5QnWz4W73M9V+7+6sGVcNowfyE/pYxMfHG4sWLTI2XX65sXDRIjEMQ4wzKyFM05SlS5fK3d/4hlx66aXK3vcqL7zwglx91VXyq0cf9XrDpFJLl8MUm6ZTmDx4Qg9Qqu5unoaSqkhNZGBt+EiFceXl5eZgtfG1//Ef8tv//V+X5/KzR9gbXdWu1RPJyclOP6PBcu3ysjI555xzvPp6rlLdaLj7hD5d0ZxG1UHNbrlZr6Jy3e5r/WkO3VeG1pIMPqGfs2qV3LR589mfUXV1tVlaUiIHDx6Ud7Zvl+3bt9ue70c//KGkpqWZl156qVee1Ht7eqSwsHDYMVdvMqAvntADlKoFpadD1fHx8YZqe9biUc775j//efbPBw4ckGuuvlpOutjCNXMc90YfaZesiezp7o19x1WB3tzc7NJriQw0nFHxxpK6QFReXu50zDqknZKSYpy7dq1x0+bNxv8984xxqKDA+OOf/iQ/+OEP5drPf97p+//w7LNeu776hgan/z7o4w4CPUCplq69v2ePfPjhhx6dd4WiGG203dz+9Mc/Dvu4qKhIrvzMZ6Tk2LFRQ9nhcCjn3X2xN7pqA5JBRyewp7sqZLu9EOgtbgS63VO36mcW6HPoo/nwww/lkOJ3frQh7YiICFm8ZIlx5VVXGd+57z7jFw88MOzz27Ztk/Lycq/cqKq2wPVlAR4CA4EeoOwKYKqrqz16w1BtpbprhK1Ui4uLTdUa+KqqKrnqqqvkwIEDI16PYRiybt06p+PW4URvUBbsnRlO9aRBiaeUge7mHLpqeqJBsf2n7ZC7TaCrzqvrHPqguro6U/Xzd3eO+sKLLnIKWG8tkbS2pU1PT/f6FBUCD3PoAepMRbZTWFZVVXlU7TpHMeR+rLhY6uvrzQRFF6p/nqkEVjlVVyefvfpqefJ3vzOXLltm+/SQN2+e/PWvfx127NDBg25dtytUhWNimmdDvbKiwpyZmjruTznKfcfdfEJXvZmrNhexC/Qf/M//SGpamhkfHy/x8fESHR19dopisFva4FyyOxvHBKIam50L3d2YJSIiQvLz8+XgkN9l1TTIWFiXrM2dO9cr50VgI9AD1LRp0yQvL89p+8+KkydlxYoVYz6vXWFcaWmpU9tL0zSVm2IM1dbWNlDl++tfmxvOP18Zlqp5+x07dkh/f78EBXnvV1Q1LD30gk6ePKncb97XVIHepWjbOpJwRaD39PRIV1fXsMY1IaGhyhvBf/zjH7bntnZLe/iXv5S3337bjI+Pl7i4OImNjZXY2FiJjo6W6OhoiYqOFtXNX6BQbXSUnJw8pq5w1roNb9UfWHs30FQGIgR6QMudO9cp0K3/obsrLi7OyMnJMa0FdkWFhU7NXgoOHzZdGRrv6emR6z7/eXnk0UfNj37sY05viqrCuMG90bOysrwWDKpAH1raXVZWJqtWr/bWy7lM9dSs2iltJHbDrV1dXea0gd3YRERd5OYWw5DDhw/L4dEbDpmpqanicDjkU5/+tFzxqU8FTMCXlZU5HVs0xl7/1ukob/WCt9Z8+Ns+7ZgYzKEHMNXTtDfWU6tCTbUL2tAWmK64efNm2bJli9PTYbrN3ujlijdWT9jtG3729RSVzeNBtd67paXFrXPY/d1UO66pCip9oaKiQnbt2uV2PYBKYWGhWXD4sHnkyBGz4uRJs6WlxeurIAYdKy52Oqbq0TCaqqoq0zrE7o39yj/88EOnG4Xx+jeFf+MJPYClKf4j9karVtV8nGoXtP/3hz84HbvuuuvkE5s2yec/9znlfOE377lHGurrzVtuvdUYHMoNCQ2VtWvXOq3jLSoqko9ccMEY/xbORisa8mWb25GEKJ7Q3Z1rVe0RLqLecS0lOVmsPft9KdnDhie9vb1yycaNqk+ZmZmZkpySIjNmzJCE+HiJjYuTuLg4iYyMlKioKImKipLIyEiJjIqS6dOnG64Uju1StALOtJmKGsmBDz5wOjZb0XfBXRUVFU5Fe7R9hQiBHtBU872FhYVO86buUnVvqzh5ctjmL/v37TNVowEXXHihLFq0yHj2D38wr/2P/1AWZt3/s59JZ2eneceddxpTp04VEZH8/HynQC/w8t7oo72Z7zmz7E/VBtWXbPcd7+lRhr1KZFSUcm5c9YT+h+efN6qqqszmpiZpbGqS5qYmaWlpkfr6emloaJC6ujqpq62VkydPKrfodJene4iPtHKjrKxMOURuwxQRmT1njiQmJkpCQsJA4E+fLtMjIyUiIkL6+vqUv7NZZ6aFmpqazId/+UsJCQmRxMTEgRqCuDhJSEiQWbNmGYP/3dWfOmX+4/XXh51j/YYNEhsb6/HUg2pabTw3hYH/ItAD2EhL1zyZe1Z1bxMRKSktPTtk+M8hzWQGJSQkyIoVKwwRkdzcXOP3zz1n3nDddco33F89+qh0d3eb937nO4aIurr+vXffHetfQWmkPdFFBpaKVVVWmqlpaeP65mgX6H39/S4HumEYEhMT4/Rk324zFz/Yz3w037j7bvPZ3//+X68jIhdt3CgLFy2SmupqqaiokJKSErHuKzCUp4Hu7dGEY8XFymH1kWRnZxtHjhwxb73lFimx3253xGmADRs2uPWadoosdSsTUfcB/8QcegBzOBzK4KmsrPTovNHR0cYCxUYtQzvGvfD8806fv+JTnxoWQJmZmcbTW7bIvHnzlK/z5BNPyO233WZ2d3crbyLq6+ultrbWa3OlEYpAt268MVIw+YrdvuN9A+1YXaZaJ+1ugxqr6dOnn+1pbhiGiGFITm6u3HLrrcb3/+d/jCefesrY9s47RmFRkfHY448rz+HppjeeFnp6atXq1RIZFSX3/td/jRTmo7r4kku8cj379u4d9rEnGzJBLwR6gFMtUfPGE82yZcucjg0Oge99/31TtdXk+R/5iNMxh8Nh/O6pp2yX0v3xxRfla1/9qpli07bSm4VxdtMQg+usRSamMM7uCd3dfu7Rij3RW93YoEUlRFGwp1p6FRIaqmw4o9pEyF1uDKn7xNq1a6W3t1d2j9BgaTT/9e1vS0pKiscjP729vfLyyy8PO7ZgwQJPTwtNMOQe4HJycpzeaE564YlG1TFu55mtVN98802nzyUnJ8vixYuVb1gJM2YYj//2t+ZXb71V3nrrLafPv/r3v0tnR4c4HA6nhhklpaVyzqpVY/o7WNkNuQ+96IkI9GC7J3Q31yyr2rS2exjoqmuzW0tdU1PjdCx7DMVkVtYhZhGRyzZtkmXLlklDQ4M0NTVJQ3291NfXS1VVldef6JevWCE1NTVjGilav2GD3HTTTbJq9WqvTOMcKy52ug67ETBMPgR6gEvPyHA6dsyDYcFBqmU6paWlUlNTY774wgtOn9u0aZPtk6bIwDD+w48+Kl/7yldMVRMTu9ar3qw8t1vaNXQt+kT0dLfbptTdnumqQHd3PbuVOzvBqUZt0rywPlp1E/jxj39cPnLBBbYh2dnZKd3d3WZXV5d0d3VJd3e3dHZ1SVdXl3R1dg78f1eXtLW1SXt7u7S3tUlbW5ucqq+XutraYf0dFi9ebOzZvdspSA8fOWKEh4dLeXm5WVFRIdVVVdLf3y/Tp0+XuLg4mZmaKrNmzfJqPcYHlsr55ORkycrOpiAOIkKgBzzV0jVPhgYH2XWMe+bpp5Vv3Oe7sLwsIiJCfvnII8Y377nHfEFxU6Cyb98+l77OFXZLu4b64IMPxr3SPTg4WFmh7m7P9ChFa1uPn9AVNxt2ga6aHvF0S0+7CvfROvqFh4dLeHi414LuuOWpPzc39+wN4qxZs4xZs2Z566VGtHPnzmEff0QxzYXJizn0AKd6Y2tubhZPG29ERUcbCxcudDr+y4cecjqWnJwsixYtcunNMzQ0VH56//3G9ddf79J1FBw+LG2Kfb3HImxIx7Shhh5sbm6Wuro6nzUtUbGtcndzyF25J7qnc+iqIXebQC9WVI67u6GJlV2RYkZGxrg+lZZZdv9TTUn5Wl9fn1iXwi1dvnzcrwP+i0APcA6bN8wqDyvdRdSFcSqjDberfOvb3zZu2rzZpa8t9dLe6Hbr0K0nV/Xy9iV3d0Czo9pNrtXNjnNWqn9XVee33oFWvU7HEz18QledMycnx/MWtm6y7pI2ewyd4zxVVFhoWqdQVDfdmLwI9ACXMGOGEaOobq7wQqDnuVhs48pwu5VhGHLX3Xcbt3/966N+bWlJidvnt3tNV3ppT8QyKVUYuxvoqhsWd1vIWqkCXTXkXm1TNDbDw1anqmH8+eNc1W2aplP3uPEaYh/qA0u717i4OPHmXgcIfAS6BlTrUCu9sJ46R9ExzsrhcJxtJuMuwzDk1q98xfjxT34y4tcVWzaK8UR8fPyoX+PtHvKu8EagT1eco6mpaczXJOL6E3pdXZ3TsaCgIElKSvIocFTD+N5on+qOmpoa03oTo6pd8bVdlvnzjRdfLIOdFgERAl0L2YqtE72x/GrOnDmjvhlftmmTx6/zqU9/2njsN7+x3Sr1oBf3Ro+Nixv1a6w7zY0HZaC7UBTX29srlZWVZsHhw2b9qVNOn29oaPDoulwtilO1S50zZ47HgfPB/v1OxzLG+elY1ajJ3b3RPaWaP1/uwTbJ0BNV7hqYpdh+1JOOVoPCw8NlydKlTp2phvJWle1FF11k/PZ//9e89nOfc/rc9u3b3eprPpIoRXBaHfLiDYSrVE1venp65PTp09LY0GDW1dVJTW2t1FRXS2VlpVScPCklJSVSVFQk/f39tuetqqoS0zSdOuK5KkgR6KqlcHWKQFf9XrqjsbHRVK1tH++nY2tfh6SkJImLixvXoW7V/Hm+opsjJjcCXQOqnZa8tdHIkiVLbAPd4XDIIptmMmOxbv1644UXXzQ/f+210mapzj5x4oQ524URg9GolnZZVVVVSUNDgxkfHz9ub9qqCvVbbr5ZZJT+4K7o6uoadetYO6qCPdWQu+oJ3VcV7uO9s5h1tGupi8Wi3qSaP89m/TksGHLXgGr4r7u72yvLr0bqQrXp8stth8nHaumyZcbvn33Waf2yt9p/qoa2Vca7p/tYA9cVbW1tY/49CFb8+6r6EFQrjiXbtPN1lWq1QXJy8rg/HVuLMseyN7qn9lv6MTB/DhUCXQMOmx7R3li6NtLynPPPP9/j86vMX7DAePYPf5D0IV3GVMVRYxGheBIOUzyFjvvSNR8uw/KkuYxdFzsr1c/L013WjivqQBYtXuzROcfigOXpWNWdcTRb33zTvGTjRvOeb3zD/P2WLebe9983T5w4Yba62C/ibUu3PJarQYUhdw1ERkVJRkaGWPcnr6ys9Hh4cPbs2couZqmpqbJs+XKfPSnNmjXLeGbLFvO6666TY8XFcthLLWBV7VFj4+Kc+pCfUOz17kuRihuNsVi8eLFkZWVJWnq6pKamSlJysiR7sCmIXZ/53t7esxXwpmkqb7g8XbKmamE83k/HrS0tpnUZo7tD/r978knzO/feKyIihYWFMnQ72jPM1WvWSHZ2tmRnZ0t8fLzExsVJbEyMfGiasuWZZ5ymNNhhDSoEuiYWLlzoFOjeWE8dEREhy5Yvl/f37Bl23BvV7aNJTUszntmyxfzC9dd7pZ2tiEi4Yq22ap7YG0WF7lAtOVPJzMyUOTk5kpGRITNnzhSHwyFJycmSlJQk8fHxhrenQFRD7iIDVdeDgd7S0uJUsCUiEu/Cmv+RHD50yOmYp4V27qpUTCWkulnh/tTvfjfq17z37rvy3rvvunS+/Px8mTd/PvPncEKgayJLsXTNWw1Zli5d6hToow23e6sqPTEx0Xjq6afNL998s1RVVZl2e8C7ypU90UXEayMCrhqc24+JiZG5eXmSlZkpaenpkpKSIskpKZKUlCRJSUmG3RawvqKqchcR6e/vP7unTUN9vfJrXFnzb6e7u1u5fDDdC5u9uENVSzEzNdXl38Gqqiqz1NI21lP3/Od/evV80AeBrgnVvN5RS7vKscrLyxv+WunpsnTZMts3td6eHvnijTeaDz70kERFR3v8JBETE2P8+rHHpLmpyeMiP9UTumrZV2FhoXR0dNi2i/W2K6+8Uq66+moZz8p6V9j2mR+yRr5esdY9KChIYmNjx/x3OX78uPLferwr3K1TL6tWr3br+1XFgp747ve+J6vXrPGr3xH4DwJdEzMVw4AFBQXS1dWlXOPsDmth3Ccuu2zErz906JD51ltvyebNm+XXjz2mXJLlrunTp8v06dM9fiNT7bjWarP5S0VFhZmbmzsub54JM2b45Zu03RD+0C529Yon9JzcXI+qsFVFdmFhYR53nnOXdVOWnJwct77f+oTvcDjknffeM9paW6W0rMw8duyYFBUWSmVFhbS3t0trW5u0trYOm/JZtWqVZGZlyRduvJFWrxgRga6JmQ6H8nh1VZXp6X7JZ9a7nn1iGm24fXCLx3ffeUdu+fKXzV8+/LDhjVD3BtXysNbWVmXzlZMnT0quC+1vdRZiP+R+9s+nFG1fM8ZQCT6Uqihx5cqV47qtrYjI0cLCYR+7O4dvrWtZcKYZTGRUlCxatMiguA3exLI1TThmzlSGtjc2aQkPD5flZ7ZpdDgckr9w4Yg3CH/729/O/vmtrVvlli9/2ezs7PT4Orxhms167yVLljgds3YIm4zs5tCHbu16StFyNtnDXdZU9R+u7C3gTX19fU61I+4O+ZdY/h7ZWVkeXxdgh0DXxJQpU2SForezt0JpcPnbFZ/61IjNZCorKkxr69S3tm6Vr33lK6aqw9h4s2vgouqH7+1ipkAUFBSkvHkb2mdeFegJHi5ZKzhyxOlY5jiHYa1iBzl3K9yPWZbzjXcfekwuBLpG5lqK10Sch/zGarAw7vxRerfvsTzRDHr99dfl67ffPuGhPs2mgUuK4o26yDLcOhnZNZYZOuSu6uMe58ImOHb6+/uV7YbHu8Ld001Zent6pKCgYNixmeNc1IfJhUDXSKZifs9bO4fNmTNH0tPTZfEovdu3b9tm+7m//fWvcvddd5m9it26xkvYtGnK61cFkHUP7MnIbjSmf8gTumpax5MlaxUVFX5R4V5TUyNJSUly6aWXypKlS0VEvU2sHVXrZYeH/e2BkVAUp5FUxS5Uqu0nxyIzK8u4bNOmEZeN9fb0yMsvvzzief7y5z+LiJg/+elPDbslUb5kV5wXo+ggJzIwheDOumPd2Fa5nwl00zSVLVpjYmPH/Jp2bXdTx/nfoba2Vmpra4f9Tm+88EJJT083L9u0Sdaed544UlIkJjbWUC1vrFbsFDfDT1czQA8EukZU20o2NzdL/alTpqfLosLDw+XKq64a8Wv2f/CBS0Pqf/nzn2XatGnmD3/0o3F/czMMQ2JiYqS5uXnYcbv15lXV1ZN+mDQuLk4aGxuHHRtch97c3Gyq1vHHxsSM+fVUdR/Lly/3+kZAo7Fre3vixAl58IEH5MEHHhg8ZM5ITJTMWbMkKSlJampqpKSkxOln5nA4JNKF3f6AsWLIXSN2w3ne2jksZZSe4K62rhQRee7ZZ+Wb99yjDANfUxVsGYahHNL1RvvcQKdsxvOvQFd+T4wHga4qRlTVh/jaxRdf7HItwKm6Otm1a5e89NJLsnv3bqcwF5mYvwMmFwJdI1HR0YaqcGi8tgJ97dVXnY595sor5brrrlN+/ZYtW+S/v/99j7u/uUv19NjR0aFcujbem7T4I1Uznr4zN2LNTU3K74nxoEucqhhR1drY1xwOh/Hm1q3y3P/7f/LVr33N46K88S7qw+TDkLtmFuTnOz1VeqvSfSTl5eWmtaJXROSijRtlw4YNRk9Pj7llyxanzz/5xBNimqb57XvvNcaraYhqx7XOzk7lsqjx3qTFH4UpVgYMrkNXPaGnp6ePeXj8ww8/VG7EkzFBYRgVHW2sXLlSVq5cKV+77TY5ePCg+c727fLSSy9JgRv9/mfPmaO8YQS8iUDXTJYilLy1SctI9tjshrZyxQpj6tSpct/3vmeIiDLUf/fkkxIcHGz+5ze/aag2SvE21Txme3u7co3wBx984PPr8XfKQB9hyN1h07XQFTU1Nco6jDQ/ebrNz8838vPz5abNm6Wjo0NaWlrM1tZWaW5qkqamJuno6JCoqCiJiY2V2NhYiY6OlsTERArhMC4IdM3MUoSStzZpGcnbb73ldOyCCy44G55BQUFy3/e+Z/T29prPP/+809f+5vHHJSQkxLzjzjt9HupRikDv7OxUFhVWVFRIW2vrpC5mGinQVX3wYz1Yg65a+y0ikpaW5nehGBERIREREYYnNzCANzGHrhlVYdfgJi2+0tnZKa+88orT8Q2Wnu9BQUHy3z/4gXHFFVcoz/PIww/LT3/yE9M0fTutrlq61t7ertzgRkSkqrp63Of5/Ylqv/jekQLdg4I4VRFiXl6e8qYCwHAEumbsnhaqq6p8Fkp79+5VVquvWLnS6VhISIj89w9+YPz7Jz6hPNcjDz8sDz7wgE8D1C7Qk5OTDVVwVHmhH34gG2kOvaWlxelzqhoFV1l3NxMRmTdv3pjPB0wmBLpmkpKTlUOTlV7el3monTt2OB1LT08Xu61HQ0JC5Cc/+YltqP/i5z+XXz36qM9CXbWdbEd7u0yZMkUWL17s9LnxWiXgr1QNgAa3T1VVuUd5EOjFlt7nIs7b9wJQI9A1ExISotykxZfLr/721786HfvYv/3biN8TEho6Yqj/6Ic/lN88/rhPQl3VRKatrU1E1OExHqsE/JlqyH1wDr1JURSnqlFw1QFFEaKnW7ECkwVFcRrKmzfPaemPr3YOO1ZcbKrOvXr16lG/NyQ0VH704x8b/f39puqm4L+//30REfMLN97o1YKoMMUT+uBcsKqo0Lpj1mQToppDP/OEXq/YaW2sgd7Y2GjWKNqlqooVJ0JHR4eUlJSYDfX10tjUJCHBwRIdEyNxsbEyKzPTsGsrDIwXAl1DqqVrvto5TLVmOCgoSJYsWeJSCIeFhcnP7r/f6OvtNV9//XWnz//3978vERER5lVXX+21UFc1ShlcfqUKj8m+dG2kIXfVZiV2leqjsZvaUO1RMF7a29vl9ddeM9/85z/lpZdeGulLzY9ccIGce+65cslHPyoOh8PvqvKhP4bcNaQaoty+fbtPXustxXK1jRdf7NYyr7CwMPnFgw8aF19yifLz/3nPPfLCCy94bfhdtSd61ZkaA9UqgebmZmloaJi0le6qLVQHA10V9j/8wQ/klGKnsdGoNmVJTk6WmJiYcQ/HttZW+cmPf2zmz59v3n7bbaOFuYiI/PONN+R73/2unLt6tfzXt75l1tfXT9rfGUwMAl1DdkOU1V5eftXa0mK++ve/Ox1fv3692+cKDw+Xn91/v7Fx40bl5++4/XZ56S9/8cr1q6q2e3p65MiRI6ZqxEFEpNqHRYX+bqQn9Lu+8Q3l99y8ebPcdeed5hNPPGG+s327qdpK1Eq1a9vSZcvcvFrPlZaWmld+5jPmIw8/POZzPP1//yfXfu5zUlNTQ6hj3DDkriHHzJmGiDi9kVRUVEiKF/dj3rdvn/L4ckVRnisiIiLk5w88YHzlllvMN954w+nzX7n1VgkKCjI/+rGPefTEpppDFxH56MUXi11Tm5MnT8qC/HxPXjZgjRToH/3oR42VK1ea1r3j9+zZI3v27Bl2LHv2bHPVqlWyYMECyc3NlZzc3GHbjh5TtNmdPXu2N/4KLjtVV2de+ZnPyCk39j23U3D4sFx95ZXy/IsvmnFxcQzBw+cIdA1NmzZNFuTny6GDB4cdP3HihLICfqzee+89p2O5ubmSlZU15jev8PDwgVC/9VZz65tvOn3+5s2b5Wc//7m5evXqUXd/G6q6utqsqa6WI0ePyra333b7uiZzpbsq0Ht6ekREZMqUKXLPN78pm2xWKwxVcuyYtTe+uWTpUlm2bJksWLBA9ituEFX1IL703fvuU4b5l266SRYtWiQpKSkyY8YMmZmaarS1tQ0U8lVXy/79+2Xr1q2yw/LfRFlZmbzw/PNy4xe/OF5/BUxiBLqm5s+f7xTo3t5o5K+KyvSNF1/s8XkjIyPlwQcfNL58883mtm3bnD7/9dtuExGRBfn5Zn5+vsRER0tUdLRERUUN9teWlpYWaW5qkuLiYim0FASapmn7JK6yavVqWbVqlWd/qQA20hy6iMjixYuNq66+2vy9ok//aPbt3Sv79u61/fx4VrgfKy42X3755WHHrr76arnt61+XhIQEp1+YyMhIiYyMNDIyMuScVavkSzfdJEeOHDG/eOONUjGkHuCxX/9arrzyykndPhjjg0DXVLZiu0lrsHni6NGjZoWiiGnNmjVeOX9kVJQ8/Mgjxs2bN5t2BX2HDh50umnxhPUd+8ILL5Qbv/QlWbly5aQeLlUFeo9lA5Wvfu1rEhsbK7t37VKufBirmYoiRV+xThuIiG2Y28nLyzMefPBB8/JNm84eq6+vlx07dpgXbdw4qX+P4HsEuqZmZWY6HfunYl56rHYr3vxERBYuWuS1N63IqCh55NFHjS996Uvme+++663T2jJlINQ3nH++3PzlL8uKFSv89g24u7tb+vr65PTp02Z/X5/0nz4tQ/+/r79f+vv7nY/19Ul/f//wP/f1yUj981W1EoONZQYlJSUZd951l4gMNOkpLioyjx49Kvv375dtb78tqvXlrkhKShq3fwPrErwrrrjCrTAftGTpUmPdunXm20OmdlQ96gFvI9A1ZTdUWVlZac4cKJobk6qqKvMPzz0nf/nzn50+d9mmTcolYZ6IjIqSR3/1K/niF76gfIIaC7u//LXXXiuf2LRJZmdnS//p01JXV2f2W4LxdH+/9Pb1yWlrKFoCcvD7ent7zx4b/F9/X5/09Pae/bi3p0f6zhzrHfxfT4/0nPlfd3e3dHV3e6VQy1tUW5wOioyMlKXLlhlLly2Tq6+5RkzTlMqKCvNoYaEcPnRI9r7/vuzcufPsPLyd9Rs2ePmqR2b9O1VVV4/pPB0dHU6jYd7+7wJQIdA1dWa7SafHruPl5ba7iqlUV1ebFRUVUnj0qBw8eFDefecd2wYg561bN+brHUl0dLTx+G9+Y7700kuybds2US2Vc1VCQoKsWLlSXvnb35w+99RTT8lTTz3lyaVOGu7s3mcYhqSmpRmpaWly4YUXishAeBYXF5tHjxyRAwcOyHvvvedU45Gbm+vVax5NUnLysI/ffecdqa2tNd0dJXjlb38za2trhx1btGiR5xcIjIJA11RERIQsXLhQDhw4MOz4jh07JCYmxvzwww+lo6NDurq6pLOzU7q6uqSpqUnq6uqktrZWTp44Ybsszc5KL1bQW0VFRxvXfPazcs1nPysdHR1y+PBh89ixY9La0iLt7e3S0dEh7W1tMi08XKKiomT69OkSHR0tcXFxkpiYKLFxcRIfF2cMFibdfddd5h+ee85n16u7jo4Oj74/LCxM8vPzjfz8fPnUpz8tIiK1tbVmYWGhFBw+LPv27lXWgfjS0qVLnY7d++1vy69+/WuXz/H666+bd95xx7Bjubm5Mm/+fL+dvoE+DF/vPY2Jc993vmM++cQT4/Ja69evlyefeipg3rRO1dWZl1x8sTQ2Nk70pQSk1NRU2fbOOwHz7+2qG66/3rTWmly2aZN85777JDo62vbv29HRIY8/9pj5wC9+4fS5p55+Ws477zztflbwPzyha2w8GqFcdNFFct3118vqNWsC6g1rRmKi8Z/f+pZ5x+23T/SljBuHwyFhYWESFhYmISEhEhISIqGhoQN/Dg2V4OBgCQ4K+tefg4MlJDhYpgYFDfw5JESCzvxZtWOdDu644w6n4tE//fGPcqSgQG796lfNvLlzJSs72xAZuCmsq6uT1157TR584AHl+W7avJkwx7jhCV1jxcXF5sYzc5betunyy+XGL35R8vLyAvbN6vTp0/LZa64xrc1ARhMaGirTpk2T8PDwswEZGhoqoWeCcGhAhgwG4ZCAHPxzcHDw2YAc/HPQmVAd+uepQUEDx4KDJWjqVAlSHBv8eGpQkARNnWoEBQfL1ClTJCg4WKZMocOzO3bv3m3+xzXXjFq0N5rLL79cfvzTnxpTp0710pUBIyPQNffNe+4xt4yh4YdVUlKSLFq8WNasWSOr16yRnJycgA3yoRoaGszamhoxpkwZCMqpU4eF6JmAlKlBQcbg0yv0V1RUZH799tvH1OcgKChI7rzrLrn+hhuMoCAGQTF+CHTNtbS0mL978kn5+f33u/T1q1avluzsbMnKypKUlBRJTUsTh8Mh8fHxWgQ44Kquri75+f33m48/9pjL37N+/Xr5+p13Sn5+Pv+9YNwR6JNIW2urdHR2mh3t7dLX3y9hYWEybdq0wSFjQ7ULGTDZVVZUmNu3b5dXXnlF3tq61enzERERcvU118jln/ykzJ07lyDHhCHQAcBFtbW1ZuHRo1Lf0CCOlBRJSk6WmTNnGqoNbIDxRqADAKAByl8BANAAgQ4AgAYIdAAANECgAwCgAQIdAAANEOgAAGiAQAcAQAMEOgAAGiDQAQDQAIEOAIAGCHQAADRAoAMAoAECHQAADRDoAABogEAHAEADBDoAABog0AEA0ACBDgCABgh0AAA0QKADAKABAh0AAA0Q6AAAaIBABwBAAwQ6AAAaINABANAAgQ4AgAYIdAAANECgAwCgAQIdAAANEOgAAGiAQAcAQAMEOgAAGiDQAQDQAIEOAIAGCHQAADRAoAMAoAECHQAADRDoAABogEAHAEADBDoAABog0AEA0ACBDgCABgh0AAA0QKADAKABAh0AAA0Q6AAAaIBABwBAAwQ6AAAaINABANAAgQ4AgAYIdAAANECgAwCgAQIdAAANEOgAAGiAQAcAQAMEOgAAGiDQAQDQAIEOAIAGCHQAADRAoAMAoAECHQAADRDoAABogEAHAEADBDoAABog0AEA0ACBDgCABgh0AAA0QKADAKABAh0AAA0Q6AAAaIBABwBAAwQ6AAAaINABANAAgQ4AgAYIdAAANECgAwCgAQIdAAANEOgAAGiAQAcAQAMEOgAAGiDQAQDQAIEOAIAGCHQAADRAoAMAoAECHQAADRDoAABogEAHAEADBDoAABog0AEA0ACBDgCABgh0AAA0QKADAKABAh0AAA0Q6AAAaIBABwBAAwQ6AAAaINABANAAgQ4AgAYIdAAANECgAwCgAQIdAAANEOgAAGiAQAcAQAMEOgAAGiDQAQDQAIEOAIAGCHQAADRAoAMAoAECHQAADRDoAABogEAHAEADBDoAABog0AEA0ACBDgCABgh0AAA0QKADAKABAh0AAA0Q6AAAaIBABwBAAwQ6AAAaINABANAAgQ4AgAYIdAAANECgAwCgAQIdAAANEOgAAGiAQAcAQAMEOgAAGiDQAQDQAIEOAIAGCHQAADRAoAMAoAECHQAADRDoAABogEAHAEADBDoAABog0AEA0ACBDgCABgh0AAA0QKADAKABAh0AAA0Q6AAAaIBABwBAAwQ6AAAaINABANAAgQ4AgAYIdAAANECgAwCgAQIdAAANEOgAAGiAQAcAQAMEOgAAGiDQAQDQAIEOAIAGCHQAADRAoAMAoAECHQAADRDoAABogEAHAEADBDoAABog0AEA0ACBDgCABgh0AAA0QKADAKABAh0AAA0Q6AAAaIBABwBAAwQ6AAAaINABANAAgQ4AgAYIdAAANECgAwCgAQIdAAANEOgAAGiAQAcAQAMEOgAAGiDQAQDQAIEOAIAGCHQAADRAoAMAoAECHQAADRDoAABogEAHAEADBDoAABog0AEA0ACBDgCABgh0AAA0QKADAKABAh0AAA0Q6AAAaIBABwBAAwQ6AAAaINABANAAgQ4AgAYIdAAANECgAwCgAQIdAAANEOgAAGiAQAcAQAMEOgAAGiDQAQDQAIEOAIAGCHQAADRAoAMAoAECHQAADRDoAABogEAHAEADBDoAABog0AEA0ACBDgCABgh0AAA0QKADAKCB/w/0EEOH14+TrgAAAABJRU5ErkJggg==" alt="W.U.T.?" style="max-width:900px; width:92%; height:auto; display:block; margin:0 auto;"></h1>
+  <p class="subtitle">The Complete Blood Type Diet Quick-Reference Ebook</p>
+  <div class="cover-btns">
+    <a href="#type-o" class="to-o">O — The Hunter</a>
+    <a href="#type-a" class="to-a">A — The Cultivator</a>
+    <a href="#type-b" class="to-b">B — The Nomad</a>
+    <a href="#type-ab" class="to-ab">AB — The Enigma</a>
+  </div>
+  <p class="fine-print">Based on the work of Dr. Peter J. D'Adamo, N.D.<br>Author of <em>Eat Right 4 Your Type</em> (1996)</p>
+</div>
+
+</div>
+
+<!-- ==================== TYPE O ==================== -->
+<section id="type-o">
+  <div class="bt-cover bt-o">
+    <h2>Type O</h2>
+    <p class="tagline">"The Hunter" — The Original Ancestral Blood Type</p>
+  <div class="jump-buttons">
+    <a href="#o-meats" class="jump-btn">🥩 Meats</a>
+    <a href="#o-seafood" class="jump-btn">🐟 Seafood</a>
+    <a href="#o-dairy" class="jump-btn">🥚 Dairy</a>
+    <a href="#o-oils" class="jump-btn">🫒 Oils</a>
+    <a href="#o-nuts" class="jump-btn">🥜 Nuts</a>
+    <a href="#o-legumes" class="jump-btn">🫘 Legumes</a>
+    <a href="#o-grains" class="jump-btn">🌾 Grains</a>
+    <a href="#o-veg" class="jump-btn">🥬 Veggies</a>
+    <a href="#o-fruits" class="jump-btn">🍎 Fruits</a>
+    <a href="#o-beverages" class="jump-btn">🧃 Beverages</a>
+    <a href="#o-herbs" class="jump-btn">🌿 Herbs</a>
+    <a href="#o-supplements" class="jump-btn">💊 Supplements</a>
+  </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">~44%</div>
+<div class="stat-label">of US Population</div></div>
+      <div class="stat"><div class="stat-num">High Protein</div><div class="stat-label">Diet Profile</div></div>
+      <div class="stat"><div class="stat-num">Vigorous</div><div class="stat-label">Exercise</div></div>
+    </div>
+  <div class="bt-toggle">
+    <a href="#type-a" class="to-a">Type A</a>
+    <a href="#type-b" class="to-b">Type B</a>
+    <a href="#type-ab" class="to-ab">Type AB</a>
+  </div>
+  </div>
+
+  <div class="intro-box">
+    <h3>📖 The Type O Story</h3>
+    <p>Dr. D'Adamo theorizes that Type O is the oldest blood type, dating back to Cro-Magnon hunter-gatherers 
+    approximately 40,000 years ago. These early humans thrived on a diet rich in animal protein, with limited grains 
+    and no dairy. Type O individuals are said to have a hardy digestive tract, an overactive immune system, 
+    and a natural ability to process meat efficiently.</p>
+    <p>Type O is described as having higher levels of stomach acid, making them well-suited to digesting meat. 
+    However, this same trait may increase susceptibility to ulcers. Dr. D'Adamo recommends vigorous aerobic exercise 
+    such as jogging, cycling, or martial arts to help manage the Type O stress response.</p>
+    </div>
+
+  <!-- Type O Foods -->
+  <div class="category" id="o-meats">
+    <div class="category-header"><span class="icon">🥩</span> Meats & Poultry</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Beef</span>
+        <span class="food-tag">Lamb</span>
+        <span class="food-tag">Mutton</span>
+        <span class="food-tag">Veal</span>
+        <span class="food-tag">Venison</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Chicken</span>
+        <span class="food-tag">Cornish Hens</span>
+        <span class="food-tag">Turkey</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Bacon</span>
+        <span class="food-tag">Duck</span>
+        <span class="food-tag">Goose</span>
+        <span class="food-tag">Ham</span>
+        <span class="food-tag">Heart</span>
+        <span class="food-tag">Partridge</span>
+        <span class="food-tag">Pork</span>
+        <span class="food-tag">Quail</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-o" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ O Cover</a></div>
+  </div>
+
+  <div class="category" id="o-seafood">
+    <div class="category-header"><span class="icon">🐟</span> Seafood</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Bluefish</span>
+        <span class="food-tag">Cod</span>
+        <span class="food-tag">Hake</span>
+        <span class="food-tag">Halibut</span>
+        <span class="food-tag">Herring</span>
+        <span class="food-tag">Mackerel</span>
+        <span class="food-tag">Pike</span>
+        <span class="food-tag">Rainbow Trout</span>
+        <span class="food-tag">Red Snapper</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Flounder</span>
+        <span class="food-tag">Grouper</span>
+        <span class="food-tag">Haddock</span>
+        <span class="food-tag">Lobster</span>
+        <span class="food-tag">Mahi-Mahi</span>
+        <span class="food-tag">Monkfish</span>
+        <span class="food-tag">Mussels</span>
+        <span class="food-tag">Ocean Perch</span>
+        <span class="food-tag">Oysters</span>
+        <span class="food-tag">Pickerel</span>
+        <span class="food-tag">Porgy</span>
+        <span class="food-tag">Sailfish</span>
+        <span class="food-tag">Scallop</span>
+        <span class="food-tag">Sea Bass</span>
+        <span class="food-tag">Sea Trout</span>
+        <span class="food-tag">Shark</span>
+        <span class="food-tag">Shrimp</span>
+        <span class="food-tag">Silver Perch</span>
+        <span class="food-tag">Smelt</span>
+        <span class="food-tag">Snail</span>
+        <span class="food-tag">Squid (Calamari)</span>
+        <span class="food-tag">Turtle</span>
+        <span class="food-tag">Weakfish</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Barracuda</span>
+        <span class="food-tag">Beluga</span>
+        <span class="food-tag">Catfish</span>
+        <span class="food-tag">Caviar</span>
+        <span class="food-tag">Conch</span>
+        <span class="food-tag">Crab</span>
+        <span class="food-tag">Crayfish</span>
+        <span class="food-tag">Eel</span>
+        <span class="food-tag">Octopus</span>
+        <span class="food-tag">Striped Bass</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-o" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ O Cover</a></div>
+  </div>
+
+  <div class="category" id="o-dairy">
+    <div class="category-header"><span class="icon">🥚</span> Eggs & Dairy</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">None listed</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Butter</span>
+        <span class="food-tag">Farmer Cheese</span>
+        <span class="food-tag">Feta</span>
+        <span class="food-tag">Goat Cheese</span>
+        <span class="food-tag">Mozzarella</span>
+        <span class="food-tag">Soy Cheese</span>
+        <span class="food-tag">Soy Milk</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">American Cheese</span>
+        <span class="food-tag">Blue Cheese</span>
+        <span class="food-tag">Brie</span>
+        <span class="food-tag">Buttermilk</span>
+        <span class="food-tag">Camembert</span>
+        <span class="food-tag">Casein</span>
+        <span class="food-tag">Cheddar</span>
+        <span class="food-tag">Colby</span>
+        <span class="food-tag">Cottage Cheese</span>
+        <span class="food-tag">Cream Cheese</span>
+        <span class="food-tag">Edam</span>
+        <span class="food-tag">Emmenthal</span>
+        <span class="food-tag">Goat Milk</span>
+        <span class="food-tag">Gouda</span>
+        <span class="food-tag">Gruyère</span>
+        <span class="food-tag">Ice Cream</span>
+        <span class="food-tag">Jarlsberg</span>
+        <span class="food-tag">Kefir</span>
+        <span class="food-tag">Monterey Jack</span>
+        <span class="food-tag">Munster</span>
+        <span class="food-tag">Neufchâtel</span>
+        <span class="food-tag">Parmesan</span>
+        <span class="food-tag">Provolone</span>
+        <span class="food-tag">Ricotta</span>
+        <span class="food-tag">Skim/2% Milk</span>
+        <span class="food-tag">String Cheese</span>
+        <span class="food-tag">Swiss</span>
+        <span class="food-tag">Whey</span>
+        <span class="food-tag">Whole Milk</span>
+        <span class="food-tag">Yogurt (all)</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-o" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ O Cover</a></div>
+  </div>
+
+  <div class="category" id="o-oils">
+    <div class="category-header"><span class="icon">🫒</span> Oils & Fats</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Flaxseed (Linseed) Oil</span>
+        <span class="food-tag">Olive Oil</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Canola Oil</span>
+        <span class="food-tag">Cod Liver Oil</span>
+        <span class="food-tag">Sesame Oil</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Corn Oil</span>
+        <span class="food-tag">Cottonseed Oil</span>
+        <span class="food-tag">Peanut Oil</span>
+        <span class="food-tag">Safflower Oil</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-o" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ O Cover</a></div>
+  </div>
+
+  <div class="category" id="o-nuts">
+    <div class="category-header"><span class="icon">🥜</span> Nuts & Seeds</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Pumpkin Seeds</span>
+        <span class="food-tag">Walnuts</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Almond Butter</span>
+        <span class="food-tag">Almonds</span>
+        <span class="food-tag">Chestnuts</span>
+        <span class="food-tag">Filberts</span>
+        <span class="food-tag">Hickory</span>
+        <span class="food-tag">Macadamia</span>
+        <span class="food-tag">Pecans</span>
+        <span class="food-tag">Pine Nuts (Pignola)</span>
+        <span class="food-tag">Sesame Butter (Tahini)</span>
+        <span class="food-tag">Sesame Seeds</span>
+        <span class="food-tag">Sunflower Butter</span>
+        <span class="food-tag">Sunflower Seeds</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Brazil Nuts</span>
+        <span class="food-tag">Cashews</span>
+        <span class="food-tag">Litchi</span>
+        <span class="food-tag">Peanut Butter</span>
+        <span class="food-tag">Peanuts</span>
+        <span class="food-tag">Pistachios</span>
+        <span class="food-tag">Poppy Seeds</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-o" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ O Cover</a></div>
+  </div>
+
+  <div class="category" id="o-legumes">
+    <div class="category-header"><span class="icon">🫘</span> Beans & Legumes</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Adzuki (Aduke)</span>
+        <span class="food-tag">Black-Eyed Peas</span>
+        <span class="food-tag">Pinto Beans</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Black Beans</span>
+        <span class="food-tag">Broad Beans</span>
+        <span class="food-tag">Cannellini</span>
+        <span class="food-tag">Fava Beans</span>
+        <span class="food-tag">Garbanzo</span>
+        <span class="food-tag">Green Beans</span>
+        <span class="food-tag">Green Peas</span>
+        <span class="food-tag">Jicama</span>
+        <span class="food-tag">Lima Beans</span>
+        <span class="food-tag">Northern Beans</span>
+        <span class="food-tag">Pea Pods</span>
+        <span class="food-tag">Red Beans</span>
+        <span class="food-tag">Red Soy</span>
+        <span class="food-tag">Snap Beans</span>
+        <span class="food-tag">String Beans</span>
+        <span class="food-tag">White Beans</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Copper Beans</span>
+        <span class="food-tag">Kidney Beans</span>
+        <span class="food-tag">Lentils (all)</span>
+        <span class="food-tag">Navy Beans</span>
+        <span class="food-tag">Tamarind</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-o" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ O Cover</a></div>
+  </div>
+
+  <div class="category" id="o-grains">
+    <div class="category-header"><span class="icon">🌾</span> Grains, Cereals & Pasta</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Essene Bread</span>
+        <span class="food-tag">Ezekiel Bread</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Amaranth</span>
+        <span class="food-tag">Bagels</span>
+        <span class="food-tag">Barley</span>
+        <span class="food-tag">Buckwheat</span>
+        <span class="food-tag">Cream of Rice</span>
+        <span class="food-tag">Durum Wheat</span>
+        <span class="food-tag">Gluten-Free Bread</span>
+        <span class="food-tag">High-Protein Bread</span>
+        <span class="food-tag">Kamut</span>
+        <span class="food-tag">Kasha</span>
+        <span class="food-tag">Matzos</span>
+        <span class="food-tag">Millet (puffed)</span>
+        <span class="food-tag">Multi-Grain Bread</span>
+        <span class="food-tag">Oat Bran Muffins</span>
+        <span class="food-tag">Pumpernickel</span>
+        <span class="food-tag">Rice (puffed)</span>
+        <span class="food-tag">Rice Bran</span>
+        <span class="food-tag">Spelt</span>
+        <span class="food-tag">Spelt Bread</span>
+        <span class="food-tag">Wheat Bran Muffins</span>
+        <span class="food-tag">Whole Wheat Bread</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Corn Muffins</span>
+        <span class="food-tag">Cornflakes</span>
+        <span class="food-tag">Cornmeal</span>
+        <span class="food-tag">Cream of Wheat</span>
+        <span class="food-tag">Familia</span>
+        <span class="food-tag">Farina</span>
+        <span class="food-tag">Grape-Nuts</span>
+        <span class="food-tag">Oat Bran</span>
+        <span class="food-tag">Oatmeal</span>
+        <span class="food-tag">Seven-Grain</span>
+        <span class="food-tag">Shredded Wheat</span>
+        <span class="food-tag">Wheat Bran</span>
+        <span class="food-tag">Wheat Germ</span>
+        <span class="food-tag">Wheat Pasta</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-o" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ O Cover</a></div>
+  </div>
+
+  <div class="category" id="o-veg">
+    <div class="category-header"><span class="icon">🥬</span> Vegetables</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Artichoke</span>
+        <span class="food-tag">Beet Greens</span>
+        <span class="food-tag">Broccoli</span>
+        <span class="food-tag">Chicory</span>
+        <span class="food-tag">Collard Greens</span>
+        <span class="food-tag">Dandelion</span>
+        <span class="food-tag">Escarole</span>
+        <span class="food-tag">Garlic</span>
+        <span class="food-tag">Green Olives</span>
+        <span class="food-tag">Green Onions</span>
+        <span class="food-tag">Horseradish</span>
+        <span class="food-tag">Kale</span>
+        <span class="food-tag">Kohlrabi</span>
+        <span class="food-tag">Leek</span>
+        <span class="food-tag">Lettuce (all)</span>
+        <span class="food-tag">Lima Beans</span>
+        <span class="food-tag">Mushrooms (abalone, enoki, portobello, tree oyster)</span>
+        <span class="food-tag">Parsnips</span>
+        <span class="food-tag">Peppers (green, yellow, jalapeño)</span>
+        <span class="food-tag">Radicchio</span>
+        <span class="food-tag">Radishes</span>
+        <span class="food-tag">Rappini</span>
+        <span class="food-tag">Rutabaga</span>
+        <span class="food-tag">Scallion</span>
+        <span class="food-tag">Shallots</span>
+        <span class="food-tag">Snow Peas</span>
+        <span class="food-tag">Spinach</span>
+        <span class="food-tag">Sprouts (mung, radish)</span>
+        <span class="food-tag">Squash (all)</span>
+        <span class="food-tag">Sweet Potatoes</span>
+        <span class="food-tag">Swiss Chard</span>
+        <span class="food-tag">Tempeh</span>
+        <span class="food-tag">Tofu</span>
+        <span class="food-tag">Tomato</span>
+        <span class="food-tag">Water Chestnut</span>
+        <span class="food-tag">Watercress</span>
+        <span class="food-tag">Yams</span>
+        <span class="food-tag">Zucchini</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Asparagus</span>
+        <span class="food-tag">Bamboo Shoots</span>
+        <span class="food-tag">Black Olives</span>
+        <span class="food-tag">Bok Choy</span>
+        <span class="food-tag">Carrots</span>
+        <span class="food-tag">Cauliflower</span>
+        <span class="food-tag">Celery</span>
+        <span class="food-tag">Chervil</span>
+        <span class="food-tag">Cucumber</span>
+        <span class="food-tag">Daikon</span>
+        <span class="food-tag">Dill</span>
+        <span class="food-tag">Domestic Mushrooms</span>
+        <span class="food-tag">Endive</span>
+        <span class="food-tag">Fennel</span>
+        <span class="food-tag">Fiddlehead Ferns</span>
+        <span class="food-tag">Ginger</span>
+        <span class="food-tag">Greek Olives</span>
+        <span class="food-tag">Mustard Greens</span>
+        <span class="food-tag">Okra</span>
+        <span class="food-tag">Pumpkin</span>
+        <span class="food-tag">Red Onions</span>
+        <span class="food-tag">Red Potatoes</span>
+        <span class="food-tag">Romaine Lettuce</span>
+        <span class="food-tag">Seaweed</span>
+        <span class="food-tag">Shiitake</span>
+        <span class="food-tag">Spanish Olives</span>
+        <span class="food-tag">Spanish Onions</span>
+        <span class="food-tag">Turnips</span>
+        <span class="food-tag">White Potatoes</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Alfalfa Sprouts</span>
+        <span class="food-tag">Avocado</span>
+        <span class="food-tag">Brussels Sprouts</span>
+        <span class="food-tag">Cabbage (all types)</span>
+        <span class="food-tag">Corn</span>
+        <span class="food-tag">Eggplant</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-o" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ O Cover</a></div>
+  </div>
+
+  <div class="category" id="o-fruits">
+    <div class="category-header"><span class="icon">🍎</span> Fruits</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Figs (fresh & dried)</span>
+        <span class="food-tag">Plums (dark, green, red)</span>
+        <span class="food-tag">Prunes</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Apples</span>
+        <span class="food-tag">Bananas</span>
+        <span class="food-tag">Blueberries</span>
+        <span class="food-tag">Boysenberries</span>
+        <span class="food-tag">Cherries</span>
+        <span class="food-tag">Cranberries</span>
+        <span class="food-tag">Currants</span>
+        <span class="food-tag">Dates</span>
+        <span class="food-tag">Elderberries</span>
+        <span class="food-tag">Gooseberries</span>
+        <span class="food-tag">Grapefruit</span>
+        <span class="food-tag">Grapes (all)</span>
+        <span class="food-tag">Guava</span>
+        <span class="food-tag">Kiwi</span>
+        <span class="food-tag">Kumquat</span>
+        <span class="food-tag">Lemons</span>
+        <span class="food-tag">Limes</span>
+        <span class="food-tag">Loganberries</span>
+        <span class="food-tag">Mangoes</span>
+        <span class="food-tag">Melons (most)</span>
+        <span class="food-tag">Nectarines</span>
+        <span class="food-tag">Papayas</span>
+        <span class="food-tag">Peaches</span>
+        <span class="food-tag">Pears</span>
+        <span class="food-tag">Persimmons</span>
+        <span class="food-tag">Pineapple</span>
+        <span class="food-tag">Pomegranates</span>
+        <span class="food-tag">Prickly Pear</span>
+        <span class="food-tag">Raisins</span>
+        <span class="food-tag">Raspberries</span>
+        <span class="food-tag">Star Fruit</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Blackberries</span>
+        <span class="food-tag">Cantaloupe</span>
+        <span class="food-tag">Coconuts</span>
+        <span class="food-tag">Honeydew</span>
+        <span class="food-tag">Oranges</span>
+        <span class="food-tag">Plantains</span>
+        <span class="food-tag">Rhubarb</span>
+        <span class="food-tag">Strawberries</span>
+        <span class="food-tag">Tangerines</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-o" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ O Cover</a></div>
+  </div>
+
+  <div class="category" id="o-beverages">
+    <div class="category-header"><span class="icon">🧃</span> Juices, Beverages & Condiments</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Black Cherry Juice</span>
+        <span class="food-tag">Club Soda</span>
+        <span class="food-tag">Pineapple Juice</span>
+        <span class="food-tag">Prune Juice</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Apple Butter</span>
+        <span class="food-tag">Apple Cider</span>
+        <span class="food-tag">Black Tea</span>
+        <span class="food-tag">Cabbage Juice</span>
+        <span class="food-tag">Carrot Juice</span>
+        <span class="food-tag">Celery Juice</span>
+        <span class="food-tag">Coffee (regular/decaf)</span>
+        <span class="food-tag">Cranberry Juice</span>
+        <span class="food-tag">Cucumber Juice</span>
+        <span class="food-tag">Grape Juice</span>
+        <span class="food-tag">Grapefruit Juice</span>
+        <span class="food-tag">Green Tea</span>
+        <span class="food-tag">Jam/Jelly (acceptable fruits)</span>
+        <span class="food-tag">Liquor (distilled)</span>
+        <span class="food-tag">Mayonnaise</span>
+        <span class="food-tag">Mustard</span>
+        <span class="food-tag">Papaya Juice</span>
+        <span class="food-tag">Salad Dressing (low-fat)</span>
+        <span class="food-tag">Soda (cola/diet)</span>
+        <span class="food-tag">Tomato Juice</span>
+        <span class="food-tag">Vegetable Juice</span>
+        <span class="food-tag">Water with Lemon</span>
+        <span class="food-tag">Wine (red/white)</span>
+        <span class="food-tag">Worcestershire Sauce</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Beer</span>
+        <span class="food-tag">Ketchup</span>
+        <span class="food-tag">Orange Juice</span>
+        <span class="food-tag">Pickles (all)</span>
+        <span class="food-tag">Relish</span>
+        <span class="food-tag">Seltzer Water</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-o" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ O Cover</a></div>
+  </div>
+
+  <div class="category" id="o-herbs">
+    <div class="category-header"><span class="icon">🌿</span> Herbs, Spices & Herbal Teas</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Carob</span>
+        <span class="food-tag">Cayenne</span>
+        <span class="food-tag">Chickweed Tea</span>
+        <span class="food-tag">Curry</span>
+        <span class="food-tag">Dandelion Tea</span>
+        <span class="food-tag">Ginger Tea</span>
+        <span class="food-tag">Green Tea</span>
+        <span class="food-tag">Linden Tea</span>
+        <span class="food-tag">Miso</span>
+        <span class="food-tag">Molasses</span>
+        <span class="food-tag">Mulberry Tea</span>
+        <span class="food-tag">Mustard (dry)</span>
+        <span class="food-tag">Paprika</span>
+        <span class="food-tag">Parsley Tea</span>
+        <span class="food-tag">Peppermint</span>
+        <span class="food-tag">Peppermint Tea</span>
+        <span class="food-tag">Pimiento</span>
+        <span class="food-tag">Red Pepper Flakes</span>
+        <span class="food-tag">Rice Syrup</span>
+        <span class="food-tag">Rose Hips Tea</span>
+        <span class="food-tag">Rosemary</span>
+        <span class="food-tag">Saffron</span>
+        <span class="food-tag">Sage</span>
+        <span class="food-tag">Slippery Elm Tea</span>
+        <span class="food-tag">Tamari</span>
+        <span class="food-tag">Turmeric</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Agar</span>
+        <span class="food-tag">Alfalfa Tea</span>
+        <span class="food-tag">Allspice</span>
+        <span class="food-tag">Almond Extract</span>
+        <span class="food-tag">Anise</span>
+        <span class="food-tag">Arrowroot</span>
+        <span class="food-tag">Basil</span>
+        <span class="food-tag">Bay Leaf</span>
+        <span class="food-tag">Black Pepper</span>
+        <span class="food-tag">Brown Rice Syrup</span>
+        <span class="food-tag">Burdock Tea</span>
+        <span class="food-tag">Cardamom</span>
+        <span class="food-tag">Catnip Tea</span>
+        <span class="food-tag">Chamomile Tea</span>
+        <span class="food-tag">Chervil</span>
+        <span class="food-tag">Chives</span>
+        <span class="food-tag">Chocolate</span>
+        <span class="food-tag">Cinnamon</span>
+        <span class="food-tag">Clove</span>
+        <span class="food-tag">Coriander</span>
+        <span class="food-tag">Cornstarch</span>
+        <span class="food-tag">Cream of Tartar</span>
+        <span class="food-tag">Cumin</span>
+        <span class="food-tag">Dill</span>
+        <span class="food-tag">Dong Quai Tea</span>
+        <span class="food-tag">Dulse</span>
+        <span class="food-tag">Echinacea Tea</span>
+        <span class="food-tag">Elder Tea</span>
+        <span class="food-tag">Goldenseal Tea</span>
+        <span class="food-tag">Hawthorn Tea</span>
+        <span class="food-tag">Honey</span>
+        <span class="food-tag">Horehound Tea</span>
+        <span class="food-tag">Horseradish</span>
+        <span class="food-tag">Kelp</span>
+        <span class="food-tag">Licorice Root Tea</span>
+        <span class="food-tag">Maple Syrup</span>
+        <span class="food-tag">Marjoram</span>
+        <span class="food-tag">Mint</span>
+        <span class="food-tag">Mullein Tea</span>
+        <span class="food-tag">Nutmeg</span>
+        <span class="food-tag">Oregano</span>
+        <span class="food-tag">Parsley</span>
+        <span class="food-tag">Raspberry Leaf Tea</span>
+        <span class="food-tag">Red Clover Tea</span>
+        <span class="food-tag">Salt</span>
+        <span class="food-tag">Sarsaparilla Tea</span>
+        <span class="food-tag">Savory</span>
+        <span class="food-tag">Senna Tea</span>
+        <span class="food-tag">Shepherd's Purse Tea</span>
+        <span class="food-tag">Skullcap Tea</span>
+        <span class="food-tag">Soy Sauce</span>
+        <span class="food-tag">Spearmint</span>
+        <span class="food-tag">Spearmint Tea</span>
+        <span class="food-tag">Strawberry Leaf Tea</span>
+        <span class="food-tag">Sugar (brown/white)</span>
+        <span class="food-tag">Tamarind</span>
+        <span class="food-tag">Tapioca</span>
+        <span class="food-tag">Tarragon</span>
+        <span class="food-tag">Thyme</span>
+        <span class="food-tag">Valerian Tea</span>
+        <span class="food-tag">Vanilla</span>
+        <span class="food-tag">Vervain Tea</span>
+        <span class="food-tag">Vinegar (apple cider, balsamic, red wine, white)</span>
+        <span class="food-tag">White Birch Tea</span>
+        <span class="food-tag">White Oak Bark Tea</span>
+        <span class="food-tag">White Pepper</span>
+        <span class="food-tag">Wintergreen</span>
+        <span class="food-tag">Yarrow Tea</span>
+        <span class="food-tag">Yellow Dock Tea</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Aloe Tea</span>
+        <span class="food-tag">Capers</span>
+        <span class="food-tag">Coltsfoot Tea</span>
+        <span class="food-tag">Corn Silk Tea</span>
+        <span class="food-tag">Fenugreek Tea</span>
+        <span class="food-tag">Gelatin (plain)</span>
+        <span class="food-tag">Gentian Tea</span>
+        <span class="food-tag">Hops Tea</span>
+        <span class="food-tag">Rhubarb Tea</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-o" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ O Cover</a></div>
+  </div>
+
+  <div class="category" id="o-supplements">
+    <div class="category-header"><span class="icon">💊</span> Supplements (per Dr. D'Adamo)</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Bromelain</span>
+        <span class="food-tag">Catechol</span>
+        <span class="food-tag">Digestive Enzymes</span>
+        <span class="food-tag">Histona Ulterior</span>
+        <span class="food-tag">Live Cell O Sprouted Greens</span>
+        <span class="food-tag">Proberry 3</span>
+        <span class="food-tag">Quercetin</span>
+        <span class="food-tag">Vitamin B-12 (Methyl 12 Plus)</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-o" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ O Cover</a></div>
+  </div>
+</section>
+
+<!-- ==================== TYPE A ==================== -->
+<section id="type-a">
+  <div class="bt-cover bt-a">
+    <h2>Type A</h2>
+    <p class="tagline">"The Cultivator" — The Agrarian Blood Type</p>
+  <div class="jump-buttons">
+    <a href="#a-meats" class="jump-btn">🥩 Meats</a>
+    <a href="#a-seafood" class="jump-btn">🐟 Seafood</a>
+    <a href="#a-dairy" class="jump-btn">🥚 Dairy</a>
+    <a href="#a-oils" class="jump-btn">🫒 Oils</a>
+    <a href="#a-nuts" class="jump-btn">🥜 Nuts</a>
+    <a href="#a-legumes" class="jump-btn">🫘 Legumes</a>
+    <a href="#a-grains" class="jump-btn">🌾 Grains</a>
+    <a href="#a-veg" class="jump-btn">🥬 Veggies</a>
+    <a href="#a-fruits" class="jump-btn">🍎 Fruits</a>
+    <a href="#a-beverages" class="jump-btn">🧃 Beverages</a>
+    <a href="#a-herbs" class="jump-btn">🌿 Herbs</a>
+    <a href="#a-supplements" class="jump-btn">💊 Supplements</a>
+  </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">~42%</div>
+<div class="stat-label">of US Population</div></div>
+      <div class="stat"><div class="stat-num">Vegetarian</div><div class="stat-label">Diet Profile</div></div>
+      <div class="stat"><div class="stat-num">Gentle</div><div class="stat-label">Exercise</div></div>
+    </div>
+  <div class="bt-toggle">
+    <a href="#type-o" class="to-o">Type O</a>
+    <a href="#type-b" class="to-b">Type B</a>
+    <a href="#type-ab" class="to-ab">Type AB</a>
+  </div>
+  </div>
+
+  <div class="intro-box">
+    <h3>📖 The Type A Story</h3>
+    <p>Dr. D'Adamo places the emergence of Type A around 20,000 years ago, coinciding with the agricultural 
+    revolution. As humans transitioned from hunting to farming, Type A allegedly evolved to thrive on a 
+    plant-based diet rich in grains, vegetables, and legumes. Type A individuals are described as having 
+    lower stomach acid and a sensitive immune system, making them better suited to vegetarian proteins 
+    than heavy meats.</p>
+    <p>Type A is advised to avoid red meat entirely, focusing instead on soy proteins, fish, and poultry 
+    in moderation. Stress management is critical for Type A — Dr. D'Adamo recommends calming exercises 
+    like yoga, tai chi, and meditation, as Type A is said to produce higher cortisol levels under stress.</p>
+    </div>
+
+  <div class="category" id="a-meats">
+    <div class="category-header"><span class="icon">🥩</span> Meats & Poultry</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">None — Avoid red meat</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Chicken</span>
+        <span class="food-tag">Cornish Hens</span>
+        <span class="food-tag">Turkey</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Bacon</span>
+        <span class="food-tag">Beef</span>
+        <span class="food-tag">Duck</span>
+        <span class="food-tag">Goose</span>
+        <span class="food-tag">Ham</span>
+        <span class="food-tag">Heart</span>
+        <span class="food-tag">Lamb</span>
+        <span class="food-tag">Partridge</span>
+        <span class="food-tag">Pork</span>
+        <span class="food-tag">Quail</span>
+        <span class="food-tag">Veal</span>
+        <span class="food-tag">Venison</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-a" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ A Cover</a></div>
+  </div>
+
+  <div class="category" id="a-seafood">
+    <div class="category-header"><span class="icon">🐟</span> Seafood</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Carp</span>
+        <span class="food-tag">Cod</span>
+        <span class="food-tag">Mackerel</span>
+        <span class="food-tag">Monkfish</span>
+        <span class="food-tag">Pickerel</span>
+        <span class="food-tag">Red Snapper</span>
+        <span class="food-tag">Salmon</span>
+        <span class="food-tag">Sardine</span>
+        <span class="food-tag">Snail</span>
+        <span class="food-tag">Trout</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Bass</span>
+        <span class="food-tag">Flounder</span>
+        <span class="food-tag">Grouper</span>
+        <span class="food-tag">Haddock</span>
+        <span class="food-tag">Hake</span>
+        <span class="food-tag">Halibut</span>
+        <span class="food-tag">Mahi-Mahi</span>
+        <span class="food-tag">Ocean Perch</span>
+        <span class="food-tag">Pike</span>
+        <span class="food-tag">Porgy</span>
+        <span class="food-tag">Sailfish</span>
+        <span class="food-tag">Sea Bass</span>
+        <span class="food-tag">Sea Trout</span>
+        <span class="food-tag">Shark</span>
+        <span class="food-tag">Smelt</span>
+        <span class="food-tag">Snapper</span>
+        <span class="food-tag">Sole</span>
+        <span class="food-tag">Swordfish</span>
+        <span class="food-tag">Tilapia</span>
+        <span class="food-tag">Tuna</span>
+        <span class="food-tag">Weakfish</span>
+        <span class="food-tag">Whitefish</span>
+        <span class="food-tag">Yellow Perch</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Anchovy</span>
+        <span class="food-tag">Barracuda</span>
+        <span class="food-tag">Beluga</span>
+        <span class="food-tag">Bluefish</span>
+        <span class="food-tag">Bluegill</span>
+        <span class="food-tag">Catfish</span>
+        <span class="food-tag">Caviar</span>
+        <span class="food-tag">Clam</span>
+        <span class="food-tag">Conch</span>
+        <span class="food-tag">Crab</span>
+        <span class="food-tag">Crayfish</span>
+        <span class="food-tag">Eel</span>
+        <span class="food-tag">Frog</span>
+        <span class="food-tag">Gray Sole</span>
+        <span class="food-tag">Herring</span>
+        <span class="food-tag">Lobster</span>
+        <span class="food-tag">Lox (Smoked Salmon)</span>
+        <span class="food-tag">Mussels</span>
+        <span class="food-tag">Octopus</span>
+        <span class="food-tag">Oysters</span>
+        <span class="food-tag">Scallop</span>
+        <span class="food-tag">Sea Bass</span>
+        <span class="food-tag">Shrimp</span>
+        <span class="food-tag">Squid</span>
+        <span class="food-tag">Striped Bass</span>
+        <span class="food-tag">Tilefish</span>
+        <span class="food-tag">Turtle</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-a" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ A Cover</a></div>
+  </div>
+
+  <div class="category" id="a-dairy">
+    <div class="category-header"><span class="icon">🥚</span> Eggs & Dairy</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Soy Cheese</span>
+        <span class="food-tag">Soy Milk</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Eggs</span>
+        <span class="food-tag">Farmer Cheese</span>
+        <span class="food-tag">Feta</span>
+        <span class="food-tag">Goat Cheese</span>
+        <span class="food-tag">Goat Milk</span>
+        <span class="food-tag">Kefir</span>
+        <span class="food-tag">Mozzarella (low-fat)</span>
+        <span class="food-tag">Ricotta (low-fat)</span>
+        <span class="food-tag">String Cheese</span>
+        <span class="food-tag">Yogurt (regular/fruit/frozen)</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">American Cheese</span>
+        <span class="food-tag">Blue Cheese</span>
+        <span class="food-tag">Brie</span>
+        <span class="food-tag">Butter</span>
+        <span class="food-tag">Buttermilk</span>
+        <span class="food-tag">Camembert</span>
+        <span class="food-tag">Casein</span>
+        <span class="food-tag">Cheddar</span>
+        <span class="food-tag">Colby</span>
+        <span class="food-tag">Cottage Cheese</span>
+        <span class="food-tag">Cream Cheese</span>
+        <span class="food-tag">Edam</span>
+        <span class="food-tag">Emmenthal</span>
+        <span class="food-tag">Gouda</span>
+        <span class="food-tag">Gruyère</span>
+        <span class="food-tag">Ice Cream</span>
+        <span class="food-tag">Jarlsberg</span>
+        <span class="food-tag">Monterey Jack</span>
+        <span class="food-tag">Munster</span>
+        <span class="food-tag">Neufchâtel</span>
+        <span class="food-tag">Parmesan</span>
+        <span class="food-tag">Provolone</span>
+        <span class="food-tag">Sherbet</span>
+        <span class="food-tag">Skim/2% Milk</span>
+        <span class="food-tag">Swiss</span>
+        <span class="food-tag">Whey</span>
+        <span class="food-tag">Whole Milk</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-a" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ A Cover</a></div>
+  </div>
+
+  <div class="category" id="a-oils">
+    <div class="category-header"><span class="icon">🫒</span> Oils & Fats</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Flaxseed (Linseed) Oil</span>
+        <span class="food-tag">Olive Oil</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Canola Oil</span>
+        <span class="food-tag">Cod Liver Oil</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Coconut Oil</span>
+        <span class="food-tag">Corn Oil</span>
+        <span class="food-tag">Cottonseed Oil</span>
+        <span class="food-tag">Peanut Oil</span>
+        <span class="food-tag">Safflower Oil</span>
+        <span class="food-tag">Sesame Oil</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-a" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ A Cover</a></div>
+  </div>
+
+  <div class="category" id="a-nuts">
+    <div class="category-header"><span class="icon">🥜</span> Nuts & Seeds</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Peanut Butter</span>
+        <span class="food-tag">Peanuts</span>
+        <span class="food-tag">Pumpkin Seeds</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Almond Butter</span>
+        <span class="food-tag">Almonds</span>
+        <span class="food-tag">Chestnuts</span>
+        <span class="food-tag">Filberts</span>
+        <span class="food-tag">Litchi</span>
+        <span class="food-tag">Macadamia</span>
+        <span class="food-tag">Pecans</span>
+        <span class="food-tag">Pine Nuts</span>
+        <span class="food-tag">Sesame Butter (Tahini)</span>
+        <span class="food-tag">Sesame Seeds</span>
+        <span class="food-tag">Sunflower Butter</span>
+        <span class="food-tag">Sunflower Seeds</span>
+        <span class="food-tag">Walnuts</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Brazil Nuts</span>
+        <span class="food-tag">Cashews</span>
+        <span class="food-tag">Pistachios</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-a" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ A Cover</a></div>
+  </div>
+
+  <div class="category" id="a-legumes">
+    <div class="category-header"><span class="icon">🫘</span> Beans & Legumes</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Adzuki Beans</span>
+        <span class="food-tag">Azuki Beans</span>
+        <span class="food-tag">Black Beans</span>
+        <span class="food-tag">Black-Eyed Peas</span>
+        <span class="food-tag">Domestic Lentils</span>
+        <span class="food-tag">Green Beans</span>
+        <span class="food-tag">Green Lentils</span>
+        <span class="food-tag">Pinto Beans</span>
+        <span class="food-tag">Red Lentils</span>
+        <span class="food-tag">Red Soy Beans</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Broad Beans</span>
+        <span class="food-tag">Cannellini</span>
+        <span class="food-tag">Fava Beans</span>
+        <span class="food-tag">Green Peas</span>
+        <span class="food-tag">Jicama</span>
+        <span class="food-tag">Pea Pods</span>
+        <span class="food-tag">Snap Beans</span>
+        <span class="food-tag">Snow Peas</span>
+        <span class="food-tag">String Beans</span>
+        <span class="food-tag">White Beans</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Copper Beans</span>
+        <span class="food-tag">Garbanzo (Chickpeas)</span>
+        <span class="food-tag">Kidney Beans</span>
+        <span class="food-tag">Lima Beans</span>
+        <span class="food-tag">Navy Beans</span>
+        <span class="food-tag">Red Beans</span>
+        <span class="food-tag">Tamarind</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-a" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ A Cover</a></div>
+  </div>
+
+  <div class="category" id="a-grains">
+    <div class="category-header"><span class="icon">🌾</span> Grains, Cereals & Pasta</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Amaranth</span>
+        <span class="food-tag">Buckwheat</span>
+        <span class="food-tag">Essene Bread</span>
+        <span class="food-tag">Ezekiel Bread</span>
+        <span class="food-tag">Kasha</span>
+        <span class="food-tag">Millet Rice Cakes</span>
+        <span class="food-tag">Oat Flour</span>
+        <span class="food-tag">Oats</span>
+        <span class="food-tag">Rice Cakes</span>
+        <span class="food-tag">Soba Noodles</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Bagels</span>
+        <span class="food-tag">Barley</span>
+        <span class="food-tag">Corn Muffin</span>
+        <span class="food-tag">Cornflakes</span>
+        <span class="food-tag">Cornmeal</span>
+        <span class="food-tag">Cream of Rice</span>
+        <span class="food-tag">Cream of Wheat</span>
+        <span class="food-tag">Durum Wheat</span>
+        <span class="food-tag">English Muffin</span>
+        <span class="food-tag">Familia</span>
+        <span class="food-tag">Farina</span>
+        <span class="food-tag">Gluten-Free Bread</span>
+        <span class="food-tag">Granola</span>
+        <span class="food-tag">Grape-Nuts</span>
+        <span class="food-tag">Matzos</span>
+        <span class="food-tag">Millet (puffed)</span>
+        <span class="food-tag">Multi-Grain Bread</span>
+        <span class="food-tag">Oat Bran</span>
+        <span class="food-tag">Oat Bran Muffins</span>
+        <span class="food-tag">Oatmeal</span>
+        <span class="food-tag">Pumpernickel</span>
+        <span class="food-tag">Rice</span>
+        <span class="food-tag">Rice (puffed)</span>
+        <span class="food-tag">Rice Bran</span>
+        <span class="food-tag">Spelt</span>
+        <span class="food-tag">Spelt Bread</span>
+        <span class="food-tag">Wheat Bran Muffins</span>
+        <span class="food-tag">Whole Wheat Bread</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Durum Wheat Pasta</span>
+        <span class="food-tag">Semolina Pasta</span>
+        <span class="food-tag">Seven-Grain</span>
+        <span class="food-tag">Shredded Wheat</span>
+        <span class="food-tag">Wheat Bran</span>
+        <span class="food-tag">Wheat Germ</span>
+        <span class="food-tag">Whole Wheat Bread</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-a" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ A Cover</a></div>
+  </div>
+
+  <div class="category" id="a-veg">
+    <div class="category-header"><span class="icon">🥬</span> Vegetables</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Artichokes</span>
+        <span class="food-tag">Beet Greens</span>
+        <span class="food-tag">Broccoli</span>
+        <span class="food-tag">Carrots</span>
+        <span class="food-tag">Celery</span>
+        <span class="food-tag">Collard Greens</span>
+        <span class="food-tag">Escarole</span>
+        <span class="food-tag">Garlic</span>
+        <span class="food-tag">Kale</span>
+        <span class="food-tag">Kohlrabi</span>
+        <span class="food-tag">Leeks</span>
+        <span class="food-tag">Lettuce (all)</span>
+        <span class="food-tag">Okra</span>
+        <span class="food-tag">Onions</span>
+        <span class="food-tag">Parsley</span>
+        <span class="food-tag">Parsnips</span>
+        <span class="food-tag">Pumpkin</span>
+        <span class="food-tag">Spinach</span>
+        <span class="food-tag">Sprouts</span>
+        <span class="food-tag">Swiss Chard</span>
+        <span class="food-tag">Tempeh</span>
+        <span class="food-tag">Tofu</span>
+        <span class="food-tag">Turnips</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Asparagus</span>
+        <span class="food-tag">Bamboo Shoots</span>
+        <span class="food-tag">Beets</span>
+        <span class="food-tag">Bok Choy</span>
+        <span class="food-tag">Brussels Sprouts</span>
+        <span class="food-tag">Cauliflower</span>
+        <span class="food-tag">Chervil</span>
+        <span class="food-tag">Chicory</span>
+        <span class="food-tag">Cucumber</span>
+        <span class="food-tag">Daikon</span>
+        <span class="food-tag">Dandelion</span>
+        <span class="food-tag">Dill</span>
+        <span class="food-tag">Endive</span>
+        <span class="food-tag">Fennel</span>
+        <span class="food-tag">Fiddlehead Ferns</span>
+        <span class="food-tag">Ginger</span>
+        <span class="food-tag">Horseradish</span>
+        <span class="food-tag">Mushrooms (all)</span>
+        <span class="food-tag">Mustard Greens</span>
+        <span class="food-tag">Radicchio</span>
+        <span class="food-tag">Radishes</span>
+        <span class="food-tag">Rappini</span>
+        <span class="food-tag">Rutabaga</span>
+        <span class="food-tag">Scallion</span>
+        <span class="food-tag">Seaweed</span>
+        <span class="food-tag">Shallots</span>
+        <span class="food-tag">Snow Peas</span>
+        <span class="food-tag">Squash (all)</span>
+        <span class="food-tag">Water Chestnut</span>
+        <span class="food-tag">Watercress</span>
+        <span class="food-tag">Zucchini</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Cabbage (all)</span>
+        <span class="food-tag">Eggplant</span>
+        <span class="food-tag">Olives (all)</span>
+        <span class="food-tag">Peppers (all)</span>
+        <span class="food-tag">Potatoes</span>
+        <span class="food-tag">Rhubarb</span>
+        <span class="food-tag">Sauerkraut</span>
+        <span class="food-tag">Shiitake Mushrooms</span>
+        <span class="food-tag">Tomatoes</span>
+        <span class="food-tag">Yams</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-a" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ A Cover</a></div>
+  </div>
+
+  <div class="category" id="a-fruits">
+    <div class="category-header"><span class="icon">🍎</span> Fruits</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Apricots</span>
+        <span class="food-tag">Blackberries</span>
+        <span class="food-tag">Blueberries</span>
+        <span class="food-tag">Boysenberries</span>
+        <span class="food-tag">Cherries</span>
+        <span class="food-tag">Cranberries</span>
+        <span class="food-tag">Figs (fresh & dried)</span>
+        <span class="food-tag">Grapefruit</span>
+        <span class="food-tag">Lemons</span>
+        <span class="food-tag">Pineapple</span>
+        <span class="food-tag">Plums</span>
+        <span class="food-tag">Prunes</span>
+        <span class="food-tag">Raisins</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Apples</span>
+        <span class="food-tag">Avocado</span>
+        <span class="food-tag">Currants</span>
+        <span class="food-tag">Dates</span>
+        <span class="food-tag">Elderberries</span>
+        <span class="food-tag">Gooseberries</span>
+        <span class="food-tag">Grapes (all)</span>
+        <span class="food-tag">Guava</span>
+        <span class="food-tag">Kiwi</span>
+        <span class="food-tag">Kumquat</span>
+        <span class="food-tag">Limes</span>
+        <span class="food-tag">Loganberries</span>
+        <span class="food-tag">Melons (all)</span>
+        <span class="food-tag">Nectarines</span>
+        <span class="food-tag">Peaches</span>
+        <span class="food-tag">Pears</span>
+        <span class="food-tag">Persimmons</span>
+        <span class="food-tag">Pomegranates</span>
+        <span class="food-tag">Prickly Pear</span>
+        <span class="food-tag">Raspberries</span>
+        <span class="food-tag">Star Fruit</span>
+        <span class="food-tag">Strawberries</span>
+        <span class="food-tag">Watermelon</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Bananas</span>
+        <span class="food-tag">Coconuts</span>
+        <span class="food-tag">Mangoes</span>
+        <span class="food-tag">Melons (cantaloupe, honeydew)</span>
+        <span class="food-tag">Oranges</span>
+        <span class="food-tag">Papaya</span>
+        <span class="food-tag">Plantains</span>
+        <span class="food-tag">Tangerines</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-a" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ A Cover</a></div>
+  </div>
+
+  <div class="category" id="a-beverages">
+    <div class="category-header"><span class="icon">🧃</span> Juices, Beverages & Condiments</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Apricot Juice</span>
+        <span class="food-tag">Black Cherry Juice</span>
+        <span class="food-tag">Carrot Juice</span>
+        <span class="food-tag">Celery Juice</span>
+        <span class="food-tag">Coffee (regular/decaf)</span>
+        <span class="food-tag">Grapefruit Juice</span>
+        <span class="food-tag">Green Tea</span>
+        <span class="food-tag">Mustard</span>
+        <span class="food-tag">Pineapple Juice</span>
+        <span class="food-tag">Prune Juice</span>
+        <span class="food-tag">Red Wine</span>
+        <span class="food-tag">Water with Lemon</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Apple Cider</span>
+        <span class="food-tag">Beer</span>
+        <span class="food-tag">Black Tea</span>
+        <span class="food-tag">Cabbage Juice</span>
+        <span class="food-tag">Cranberry Juice</span>
+        <span class="food-tag">Cucumber Juice</span>
+        <span class="food-tag">Grape Juice</span>
+        <span class="food-tag">Jam/Jelly (acceptable fruits)</span>
+        <span class="food-tag">Pickles (dill, sour, kosher, sweet)</span>
+        <span class="food-tag">Relish</span>
+        <span class="food-tag">Salad Dressing (low-fat)</span>
+        <span class="food-tag">Vegetable Juice</span>
+        <span class="food-tag">White Wine</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Distilled Liquor</span>
+        <span class="food-tag">Ketchup</span>
+        <span class="food-tag">Mayonnaise</span>
+        <span class="food-tag">Orange Juice</span>
+        <span class="food-tag">Papaya Juice</span>
+        <span class="food-tag">Seltzer Water</span>
+        <span class="food-tag">Soda (all)</span>
+        <span class="food-tag">Tomato Juice</span>
+        <span class="food-tag">Vinegar (all)</span>
+        <span class="food-tag">Worcestershire Sauce</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-a" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ A Cover</a></div>
+  </div>
+
+  <div class="category" id="a-herbs">
+    <div class="category-header"><span class="icon">🌿</span> Herbs, Spices & Herbal Teas</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Alfalfa Tea</span>
+        <span class="food-tag">Aloe Tea</span>
+        <span class="food-tag">Barley Malt</span>
+        <span class="food-tag">Blackstrap Molasses</span>
+        <span class="food-tag">Burdock Tea</span>
+        <span class="food-tag">Chamomile Tea</span>
+        <span class="food-tag">Echinacea Tea</span>
+        <span class="food-tag">Fenugreek Tea</span>
+        <span class="food-tag">Garlic</span>
+        <span class="food-tag">Ginger</span>
+        <span class="food-tag">Ginger Tea</span>
+        <span class="food-tag">Ginseng Tea</span>
+        <span class="food-tag">Green Tea</span>
+        <span class="food-tag">Hawthorn Tea</span>
+        <span class="food-tag">Milk Thistle Tea</span>
+        <span class="food-tag">Miso</span>
+        <span class="food-tag">Rose Hips Tea</span>
+        <span class="food-tag">Slippery Elm Tea</span>
+        <span class="food-tag">Soy Sauce</span>
+        <span class="food-tag">St. John's Wort Tea</span>
+        <span class="food-tag">Tamari</span>
+        <span class="food-tag">Valerian Tea</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Agar</span>
+        <span class="food-tag">Allspice</span>
+        <span class="food-tag">Almond Extract</span>
+        <span class="food-tag">Anise</span>
+        <span class="food-tag">Arrowroot</span>
+        <span class="food-tag">Basil</span>
+        <span class="food-tag">Bay Leaf</span>
+        <span class="food-tag">Brown Rice Syrup</span>
+        <span class="food-tag">Cardamom</span>
+        <span class="food-tag">Carob</span>
+        <span class="food-tag">Chervil</span>
+        <span class="food-tag">Chickweed Tea</span>
+        <span class="food-tag">Chives</span>
+        <span class="food-tag">Chocolate</span>
+        <span class="food-tag">Cinnamon</span>
+        <span class="food-tag">Clove</span>
+        <span class="food-tag">Coltsfoot Tea</span>
+        <span class="food-tag">Coriander</span>
+        <span class="food-tag">Cornstarch</span>
+        <span class="food-tag">Cream of Tartar</span>
+        <span class="food-tag">Cumin</span>
+        <span class="food-tag">Curry</span>
+        <span class="food-tag">Dandelion Tea</span>
+        <span class="food-tag">Dill</span>
+        <span class="food-tag">Dong Quai Tea</span>
+        <span class="food-tag">Dulse</span>
+        <span class="food-tag">Elder Tea</span>
+        <span class="food-tag">Goldenseal Tea</span>
+        <span class="food-tag">Honey</span>
+        <span class="food-tag">Horehound Tea</span>
+        <span class="food-tag">Horseradish</span>
+        <span class="food-tag">Kelp</span>
+        <span class="food-tag">Licorice Root Tea</span>
+        <span class="food-tag">Maple Syrup</span>
+        <span class="food-tag">Marjoram</span>
+        <span class="food-tag">Mint</span>
+        <span class="food-tag">Mulberry Tea</span>
+        <span class="food-tag">Mullein Tea</span>
+        <span class="food-tag">Nutmeg</span>
+        <span class="food-tag">Oregano</span>
+        <span class="food-tag">Paprika</span>
+        <span class="food-tag">Parsley</span>
+        <span class="food-tag">Parsley Tea</span>
+        <span class="food-tag">Peppermint</span>
+        <span class="food-tag">Peppermint Tea</span>
+        <span class="food-tag">Pimiento</span>
+        <span class="food-tag">Raspberry Leaf Tea</span>
+        <span class="food-tag">Red Clover Tea</span>
+        <span class="food-tag">Rice Syrup</span>
+        <span class="food-tag">Rosemary</span>
+        <span class="food-tag">Saffron</span>
+        <span class="food-tag">Sage</span>
+        <span class="food-tag">Salt</span>
+        <span class="food-tag">Sarsaparilla Tea</span>
+        <span class="food-tag">Savory</span>
+        <span class="food-tag">Senna Tea</span>
+        <span class="food-tag">Shepherd's Purse Tea</span>
+        <span class="food-tag">Skullcap Tea</span>
+        <span class="food-tag">Spearmint</span>
+        <span class="food-tag">Spearmint Tea</span>
+        <span class="food-tag">Strawberry Leaf Tea</span>
+        <span class="food-tag">Sugar (brown/white)</span>
+        <span class="food-tag">Tamarind</span>
+        <span class="food-tag">Tapioca</span>
+        <span class="food-tag">Tarragon</span>
+        <span class="food-tag">Thyme</span>
+        <span class="food-tag">Thyme Tea</span>
+        <span class="food-tag">Turmeric</span>
+        <span class="food-tag">Vanilla</span>
+        <span class="food-tag">Vervain Tea</span>
+        <span class="food-tag">White Birch Tea</span>
+        <span class="food-tag">White Oak Bark Tea</span>
+        <span class="food-tag">Yarrow Tea</span>
+        <span class="food-tag">Yellow Dock Tea</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Capers</span>
+        <span class="food-tag">Catnip Tea</span>
+        <span class="food-tag">Cayenne Tea</span>
+        <span class="food-tag">Corn Silk Tea</span>
+        <span class="food-tag">Gelatin (plain)</span>
+        <span class="food-tag">Gentian Tea</span>
+        <span class="food-tag">Hops Tea</span>
+        <span class="food-tag">Pepper (black, white, cayenne, red flakes)</span>
+        <span class="food-tag">Rhubarb Tea</span>
+        <span class="food-tag">Vinegar (all types)</span>
+        <span class="food-tag">Wintergreen</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-a" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ A Cover</a></div>
+  </div>
+
+  <div class="category" id="a-supplements">
+    <div class="category-header"><span class="icon">💊</span> Supplements (per Dr. D'Adamo)</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Bromelain</span>
+        <span class="food-tag">Cortiguard</span>
+        <span class="food-tag">Digestive Enzymes</span>
+        <span class="food-tag">Histona Ulterior</span>
+        <span class="food-tag">Live Cell A Sprouted Greens</span>
+        <span class="food-tag">Proberry 3</span>
+        <span class="food-tag">Quercetin</span>
+        <span class="food-tag">Vitamin B-12 (Methyl 12 Plus)</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-a" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ A Cover</a></div>
+  </div>
+</section>
+
+<!-- ==================== TYPE B ==================== -->
+<section id="type-b">
+  <div class="bt-cover bt-b">
+    <h2>Type B</h2>
+    <p class="tagline">"The Nomad" — The Balanced Omnivore</p>
+  <div class="jump-buttons">
+    <a href="#b-meats" class="jump-btn">🥩 Meats</a>
+    <a href="#b-seafood" class="jump-btn">🐟 Seafood</a>
+    <a href="#b-dairy" class="jump-btn">🥚 Dairy</a>
+    <a href="#b-oils" class="jump-btn">🫒 Oils</a>
+    <a href="#b-nuts" class="jump-btn">🥜 Nuts</a>
+    <a href="#b-legumes" class="jump-btn">🫘 Legumes</a>
+    <a href="#b-grains" class="jump-btn">🌾 Grains</a>
+    <a href="#b-veg" class="jump-btn">🥬 Veggies</a>
+    <a href="#b-fruits" class="jump-btn">🍎 Fruits</a>
+    <a href="#b-beverages" class="jump-btn">🧃 Beverages</a>
+    <a href="#b-herbs" class="jump-btn">🌿 Herbs</a>
+    <a href="#b-supplements" class="jump-btn">💊 Supplements</a>
+  </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">~10%</div>
+<div class="stat-label">of US Population</div></div>
+      <div class="stat"><div class="stat-num">Balanced</div><div class="stat-label">Diet Profile</div></div>
+      <div class="stat"><div class="stat-num">Moderate</div><div class="stat-label">Exercise</div></div>
+    </div>
+  <div class="bt-toggle">
+    <a href="#type-o" class="to-o">Type O</a>
+    <a href="#type-a" class="to-a">Type A</a>
+    <a href="#type-ab" class="to-ab">Type AB</a>
+  </div>
+  </div>
+
+  <div class="intro-box">
+    <h3>📖 The Type B Story</h3>
+    <p>Dr. D'Adamo theorizes that Type B emerged approximately 10,000–15,000 years ago among nomadic 
+    pastoral tribes of the Himalayan highlands and Mongolian steppes. These populations herded animals 
+    and consumed dairy, meat, and cultivated grains. Type B is described as the most balanced blood type — 
+    able to tolerate a wider variety of foods than any other type.</p>
+    <p>Type B individuals are said to have a strong immune system, a flexible digestive system, and 
+    the best ability to adapt to dairy products. However, Dr. D'Adamo warns that chicken contains a 
+    lectin that can trigger immune reactions in Type B, potentially leading to strokes and autoimmune 
+    disorders. The biggest weight-gain triggers for Type B are said to be corn, wheat, buckwheat, 
+    lentils, tomatoes, peanuts, and sesame seeds.</p>
+    </div>
+
+  <div class="category" id="b-meats">
+    <div class="category-header"><span class="icon">🥩</span> Meats & Poultry</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Buffalo</span>
+        <span class="food-tag">Lamb</span>
+        <span class="food-tag">Mutton</span>
+        <span class="food-tag">Pheasant</span>
+        <span class="food-tag">Rabbit</span>
+        <span class="food-tag">Turkey</span>
+        <span class="food-tag">Veal</span>
+        <span class="food-tag">Venison</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Beef (regular, ground)</span>
+        <span class="food-tag">Duck</span>
+        <span class="food-tag">Goose</span>
+        <span class="food-tag">Guinea Hen</span>
+        <span class="food-tag">Liver</span>
+        <span class="food-tag">Partridge</span>
+        <span class="food-tag">Quail</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Bacon</span>
+        <span class="food-tag">Chicken</span>
+        <span class="food-tag">Cornish Hens</span>
+        <span class="food-tag">Ham</span>
+        <span class="food-tag">Heart</span>
+        <span class="food-tag">Pork</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-b" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ B Cover</a></div>
+  </div>
+
+  <div class="category" id="b-seafood">
+    <div class="category-header"><span class="icon">🐟</span> Seafood</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Cod</span>
+        <span class="food-tag">Flounder</span>
+        <span class="food-tag">Grouper</span>
+        <span class="food-tag">Haddock</span>
+        <span class="food-tag">Hake</span>
+        <span class="food-tag">Halibut</span>
+        <span class="food-tag">Mackerel</span>
+        <span class="food-tag">Mahi-Mahi</span>
+        <span class="food-tag">Ocean Perch</span>
+        <span class="food-tag">Pickerel</span>
+        <span class="food-tag">Pike</span>
+        <span class="food-tag">Porgy</span>
+        <span class="food-tag">Rainbow Trout</span>
+        <span class="food-tag">Red Snapper</span>
+        <span class="food-tag">Sailfish</span>
+        <span class="food-tag">Sardine</span>
+        <span class="food-tag">Sea Trout</span>
+        <span class="food-tag">Shad</span>
+        <span class="food-tag">Snail</span>
+        <span class="food-tag">Sturgeon</span>
+        <span class="food-tag">Whitefish</span>
+        <span class="food-tag">Yellow Perch</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Bluefish</span>
+        <span class="food-tag">Carp</span>
+        <span class="food-tag">Catfish</span>
+        <span class="food-tag">Caviar</span>
+        <span class="food-tag">Herring</span>
+        <span class="food-tag">Mussels</span>
+        <span class="food-tag">Salmon</span>
+        <span class="food-tag">Scallop</span>
+        <span class="food-tag">Snapper</span>
+        <span class="food-tag">Squid (Calamari)</span>
+        <span class="food-tag">Swordfish</span>
+        <span class="food-tag">Tilefish</span>
+        <span class="food-tag">Weakfish</span>
+        <span class="food-tag">White Perch</span>
+        <span class="food-tag">Yellow Perch</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Anchovy</span>
+        <span class="food-tag">Barracuda</span>
+        <span class="food-tag">Beluga</span>
+        <span class="food-tag">Bluegill Bass</span>
+        <span class="food-tag">Clam</span>
+        <span class="food-tag">Conch</span>
+        <span class="food-tag">Crab</span>
+        <span class="food-tag">Crayfish</span>
+        <span class="food-tag">Eel</span>
+        <span class="food-tag">Frog</span>
+        <span class="food-tag">Gray Sole</span>
+        <span class="food-tag">Lobster</span>
+        <span class="food-tag">Lox (Smoked Salmon)</span>
+        <span class="food-tag">Octopus</span>
+        <span class="food-tag">Oysters</span>
+        <span class="food-tag">Sea Bass</span>
+        <span class="food-tag">Shrimp</span>
+        <span class="food-tag">Striped Bass</span>
+        <span class="food-tag">Turtle</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-b" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ B Cover</a></div>
+  </div>
+
+  <div class="category" id="b-dairy">
+    <div class="category-header"><span class="icon">🥚</span> Eggs & Dairy</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Cottage Cheese</span>
+        <span class="food-tag">Farmer Cheese</span>
+        <span class="food-tag">Feta</span>
+        <span class="food-tag">Goat Cheese</span>
+        <span class="food-tag">Goat Milk</span>
+        <span class="food-tag">Kefir</span>
+        <span class="food-tag">Mozzarella</span>
+        <span class="food-tag">Ricotta</span>
+        <span class="food-tag">Skim/2% Milk</span>
+        <span class="food-tag">Yogurt (all)</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Brie</span>
+        <span class="food-tag">Buttermilk</span>
+        <span class="food-tag">Camembert</span>
+        <span class="food-tag">Casein</span>
+        <span class="food-tag">Cheddar</span>
+        <span class="food-tag">Colby</span>
+        <span class="food-tag">Cream Cheese</span>
+        <span class="food-tag">Edam</span>
+        <span class="food-tag">Eggs</span>
+        <span class="food-tag">Emmenthal</span>
+        <span class="food-tag">Gouda</span>
+        <span class="food-tag">Gruyère</span>
+        <span class="food-tag">Jarlsberg</span>
+        <span class="food-tag">Monterey Jack</span>
+        <span class="food-tag">Munster</span>
+        <span class="food-tag">Neufchâtel</span>
+        <span class="food-tag">Parmesan</span>
+        <span class="food-tag">Provolone</span>
+        <span class="food-tag">Sherbet</span>
+        <span class="food-tag">Swiss</span>
+        <span class="food-tag">Whey</span>
+        <span class="food-tag">Whole Milk</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">American Cheese</span>
+        <span class="food-tag">Blue Cheese</span>
+        <span class="food-tag">Ice Cream</span>
+        <span class="food-tag">String Cheese</span>
+      </div>
+  </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-b" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ B Cover</a></div>
+  </div>
+
+  <div class="category" id="b-oils">
+    <div class="category-header"><span class="icon">🫒</span> Oils & Fats</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Olive Oil</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Canola Oil</span>
+        <span class="food-tag">Cod Liver Oil</span>
+        <span class="food-tag">Flaxseed (Linseed) Oil</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Corn Oil</span>
+        <span class="food-tag">Cottonseed Oil</span>
+        <span class="food-tag">Peanut Oil</span>
+        <span class="food-tag">Safflower Oil</span>
+        <span class="food-tag">Sesame Oil</span>
+        <span class="food-tag">Sunflower Oil</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-b" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ B Cover</a></div>
+  </div>
+
+  <div class="category" id="b-nuts">
+    <div class="category-header"><span class="icon">🥜</span> Nuts & Seeds</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">None listed</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Almond Butter</span>
+        <span class="food-tag">Almonds</span>
+        <span class="food-tag">Brazil Nuts</span>
+        <span class="food-tag">Chestnuts</span>
+        <span class="food-tag">Hickory</span>
+        <span class="food-tag">Litchi</span>
+        <span class="food-tag">Macadamia</span>
+        <span class="food-tag">Pecans</span>
+        <span class="food-tag">Walnuts</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Cashews</span>
+        <span class="food-tag">Peanut Butter</span>
+        <span class="food-tag">Peanuts</span>
+        <span class="food-tag">Pistachios</span>
+        <span class="food-tag">Poppy Seeds</span>
+        <span class="food-tag">Sesame Butter (Tahini)</span>
+        <span class="food-tag">Sesame Seeds</span>
+        <span class="food-tag">Sunflower Butter</span>
+        <span class="food-tag">Sunflower Seeds</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-b" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ B Cover</a></div>
+  </div>
+
+  <div class="category" id="b-legumes">
+    <div class="category-header"><span class="icon">🫘</span> Beans & Legumes</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Kidney Beans</span>
+        <span class="food-tag">Lima Beans</span>
+        <span class="food-tag">Navy Beans</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Broad Beans</span>
+        <span class="food-tag">Cannellini</span>
+        <span class="food-tag">Copper Beans</span>
+        <span class="food-tag">Green Beans</span>
+        <span class="food-tag">Green Peas</span>
+        <span class="food-tag">Jicama</span>
+        <span class="food-tag">Northern Beans</span>
+        <span class="food-tag">Pea Pods</span>
+        <span class="food-tag">Red Beans</span>
+        <span class="food-tag">Snap Beans</span>
+        <span class="food-tag">String Beans</span>
+        <span class="food-tag">Tamarind</span>
+        <span class="food-tag">White Beans</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Adzuki Beans</span>
+        <span class="food-tag">Black Beans</span>
+        <span class="food-tag">Black-Eyed Peas</span>
+        <span class="food-tag">Fava Beans</span>
+        <span class="food-tag">Garbanzo (Chickpeas)</span>
+        <span class="food-tag">Lentils (all)</span>
+        <span class="food-tag">Pinto Beans</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-b" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ B Cover</a></div>
+  </div>
+
+  <div class="category" id="b-grains">
+    <div class="category-header"><span class="icon">🌾</span> Grains, Cereals & Pasta</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">100% Rye Bread</span>
+        <span class="food-tag">Brown Rice Bread</span>
+        <span class="food-tag">Essene Bread</span>
+        <span class="food-tag">Ezekiel Bread</span>
+        <span class="food-tag">Fin Crisp</span>
+        <span class="food-tag">Millet</span>
+        <span class="food-tag">Oat Bran</span>
+        <span class="food-tag">Oatmeal</span>
+        <span class="food-tag">Rice (puffed)</span>
+        <span class="food-tag">Rice Bran</span>
+        <span class="food-tag">Rice Cakes</span>
+        <span class="food-tag">Rye Crisps</span>
+        <span class="food-tag">Ryvita</span>
+        <span class="food-tag">Wasa Bread</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Bagels</span>
+        <span class="food-tag">Cream of Rice</span>
+        <span class="food-tag">Durum Wheat</span>
+        <span class="food-tag">Familia</span>
+        <span class="food-tag">Farina</span>
+        <span class="food-tag">Gluten-Free Bread</span>
+        <span class="food-tag">Granola</span>
+        <span class="food-tag">Grape-Nuts</span>
+        <span class="food-tag">High-Protein Bread</span>
+        <span class="food-tag">Matzos</span>
+        <span class="food-tag">Multi-Grain Bread</span>
+        <span class="food-tag">Oat Bran Muffins</span>
+        <span class="food-tag">Oat Flour</span>
+        <span class="food-tag">Pumpernickel</span>
+        <span class="food-tag">Rice (basmati, brown, white, wild)</span>
+        <span class="food-tag">Rice Flour</span>
+        <span class="food-tag">Rye Flour</span>
+        <span class="food-tag">Spelt</span>
+        <span class="food-tag">Spelt Bread</span>
+        <span class="food-tag">Sprouted Wheat Flour</span>
+        <span class="food-tag">Wheat Bran Muffins</span>
+        <span class="food-tag">Whole Wheat Bread</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Amaranth</span>
+        <span class="food-tag">Barley</span>
+        <span class="food-tag">Buckwheat</span>
+        <span class="food-tag">Corn Muffins</span>
+        <span class="food-tag">Cornflakes</span>
+        <span class="food-tag">Cornmeal</span>
+        <span class="food-tag">Cream of Wheat</span>
+        <span class="food-tag">Kamut</span>
+        <span class="food-tag">Kasha</span>
+        <span class="food-tag">Rye</span>
+        <span class="food-tag">Seven-Grain</span>
+        <span class="food-tag">Shredded Wheat</span>
+        <span class="food-tag">Wheat Bran</span>
+        <span class="food-tag">Wheat Germ</span>
+        <span class="food-tag">Wheat Pasta</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-b" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ B Cover</a></div>
+  </div>
+
+  <div class="category" id="b-veg">
+    <div class="category-header"><span class="icon">🥬</span> Vegetables</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Beet Greens</span>
+        <span class="food-tag">Beets</span>
+        <span class="food-tag">Broccoli</span>
+        <span class="food-tag">Brussels Sprouts</span>
+        <span class="food-tag">Cabbage (Chinese, red, white)</span>
+        <span class="food-tag">Carrots</span>
+        <span class="food-tag">Cauliflower</span>
+        <span class="food-tag">Collard Greens</span>
+        <span class="food-tag">Eggplant</span>
+        <span class="food-tag">Kale</span>
+        <span class="food-tag">Lima Beans</span>
+        <span class="food-tag">Mushrooms (Shiitake)</span>
+        <span class="food-tag">Mustard Greens</span>
+        <span class="food-tag">Parsley</span>
+        <span class="food-tag">Parsnips</span>
+        <span class="food-tag">Peppers (green, red, yellow)</span>
+        <span class="food-tag">Sweet Potatoes</span>
+        <span class="food-tag">Yams</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Alfalfa Sprouts</span>
+        <span class="food-tag">Arugula</span>
+        <span class="food-tag">Asparagus</span>
+        <span class="food-tag">Bamboo Shoots</span>
+        <span class="food-tag">Bok Choy</span>
+        <span class="food-tag">Celery</span>
+        <span class="food-tag">Chervil</span>
+        <span class="food-tag">Chicory</span>
+        <span class="food-tag">Cucumber</span>
+        <span class="food-tag">Daikon</span>
+        <span class="food-tag">Dandelion</span>
+        <span class="food-tag">Dill</span>
+        <span class="food-tag">Endive</span>
+        <span class="food-tag">Escarole</span>
+        <span class="food-tag">Fennel</span>
+        <span class="food-tag">Fiddlehead Ferns</span>
+        <span class="food-tag">Garlic</span>
+        <span class="food-tag">Ginger</span>
+        <span class="food-tag">Horseradish</span>
+        <span class="food-tag">Kohlrabi</span>
+        <span class="food-tag">Leek</span>
+        <span class="food-tag">Lettuce (all)</span>
+        <span class="food-tag">Mushrooms (abalone, domestic, enoki, portobello, tree oyster)</span>
+        <span class="food-tag">Okra</span>
+        <span class="food-tag">Olives (green, Greek, Spanish)</span>
+        <span class="food-tag">Onions (all)</span>
+        <span class="food-tag">Potatoes (red, white)</span>
+        <span class="food-tag">Pumpkin</span>
+        <span class="food-tag">Radicchio</span>
+        <span class="food-tag">Rappini</span>
+        <span class="food-tag">Rutabaga</span>
+        <span class="food-tag">Scallion</span>
+        <span class="food-tag">Seaweed</span>
+        <span class="food-tag">Shallots</span>
+        <span class="food-tag">Snow Peas</span>
+        <span class="food-tag">Spinach</span>
+        <span class="food-tag">Squash (all)</span>
+        <span class="food-tag">Swiss Chard</span>
+        <span class="food-tag">Turnips</span>
+        <span class="food-tag">Water Chestnut</span>
+        <span class="food-tag">Watercress</span>
+        <span class="food-tag">Zucchini</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Artichoke</span>
+        <span class="food-tag">Avocado</span>
+        <span class="food-tag">Black Olives</span>
+        <span class="food-tag">Corn</span>
+        <span class="food-tag">Jalapeño Peppers</span>
+        <span class="food-tag">Mung Sprouts</span>
+        <span class="food-tag">Radish Sprouts</span>
+        <span class="food-tag">Radishes</span>
+        <span class="food-tag">Tempeh</span>
+        <span class="food-tag">Tofu</span>
+        <span class="food-tag">Tomato</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-b" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ B Cover</a></div>
+  </div>
+
+  <div class="category" id="b-fruits">
+    <div class="category-header"><span class="icon">🍎</span> Fruits</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Bananas</span>
+        <span class="food-tag">Cranberries</span>
+        <span class="food-tag">Grapes (black, red, Concord, green)</span>
+        <span class="food-tag">Papaya</span>
+        <span class="food-tag">Pineapple</span>
+        <span class="food-tag">Plums (dark, red, green)</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Apples</span>
+        <span class="food-tag">Apricots</span>
+        <span class="food-tag">Blackberries</span>
+        <span class="food-tag">Blueberries</span>
+        <span class="food-tag">Boysenberries</span>
+        <span class="food-tag">Cherries</span>
+        <span class="food-tag">Currants</span>
+        <span class="food-tag">Dates</span>
+        <span class="food-tag">Elderberries</span>
+        <span class="food-tag">Figs</span>
+        <span class="food-tag">Gooseberries</span>
+        <span class="food-tag">Grapefruit</span>
+        <span class="food-tag">Guava</span>
+        <span class="food-tag">Kiwi</span>
+        <span class="food-tag">Kumquat</span>
+        <span class="food-tag">Lemons</span>
+        <span class="food-tag">Limes</span>
+        <span class="food-tag">Loganberries</span>
+        <span class="food-tag">Mangoes</span>
+        <span class="food-tag">Melons (all)</span>
+        <span class="food-tag">Nectarines</span>
+        <span class="food-tag">Oranges</span>
+        <span class="food-tag">Peaches</span>
+        <span class="food-tag">Pears</span>
+        <span class="food-tag">Plantains</span>
+        <span class="food-tag">Prunes</span>
+        <span class="food-tag">Raisins</span>
+        <span class="food-tag">Raspberries</span>
+        <span class="food-tag">Strawberries</span>
+        <span class="food-tag">Tangerines</span>
+        <span class="food-tag">Watermelon</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Coconuts</span>
+        <span class="food-tag">Persimmons</span>
+        <span class="food-tag">Pomegranates</span>
+        <span class="food-tag">Prickly Pear</span>
+        <span class="food-tag">Rhubarb</span>
+        <span class="food-tag">Star Fruit</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-b" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ B Cover</a></div>
+  </div>
+
+  <div class="category" id="b-beverages">
+    <div class="category-header"><span class="icon">🧃</span> Juices, Beverages & Condiments</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Cabbage Juice</span>
+        <span class="food-tag">Cayenne</span>
+        <span class="food-tag">Cranberry Juice</span>
+        <span class="food-tag">Curry</span>
+        <span class="food-tag">Ginger Tea</span>
+        <span class="food-tag">Ginseng Tea</span>
+        <span class="food-tag">Grape Juice</span>
+        <span class="food-tag">Green Tea</span>
+        <span class="food-tag">Horseradish</span>
+        <span class="food-tag">Papaya Juice</span>
+        <span class="food-tag">Parsley</span>
+        <span class="food-tag">Peppermint Tea</span>
+        <span class="food-tag">Pineapple Juice</span>
+        <span class="food-tag">Raspberry Leaf Tea</span>
+        <span class="food-tag">Sage Tea</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Alfalfa Tea</span>
+        <span class="food-tag">Apple Butter</span>
+        <span class="food-tag">Beer</span>
+        <span class="food-tag">Burdock Tea</span>
+        <span class="food-tag">Catnip Tea</span>
+        <span class="food-tag">Chamomile Tea</span>
+        <span class="food-tag">Coffee (regular/decaf)</span>
+        <span class="food-tag">Dandelion Tea</span>
+        <span class="food-tag">Dong Quai Tea</span>
+        <span class="food-tag">Echinacea Tea</span>
+        <span class="food-tag">Elder Tea</span>
+        <span class="food-tag">Goldenseal Tea</span>
+        <span class="food-tag">Hawthorn Tea</span>
+        <span class="food-tag">Horehound Tea</span>
+        <span class="food-tag">Jam/Jelly (acceptable fruits)</span>
+        <span class="food-tag">Licorice Root Tea</span>
+        <span class="food-tag">Mayonnaise</span>
+        <span class="food-tag">Mulberry Tea</span>
+        <span class="food-tag">Mullein Tea</span>
+        <span class="food-tag">Mustard</span>
+        <span class="food-tag">Pickles (sour, dill, kosher, sweet)</span>
+        <span class="food-tag">Relish</span>
+        <span class="food-tag">Rose Hips Tea</span>
+        <span class="food-tag">Salad Dressing (low-fat)</span>
+        <span class="food-tag">Sarsaparilla Tea</span>
+        <span class="food-tag">Slippery Elm Tea</span>
+        <span class="food-tag">Spearmint Tea</span>
+        <span class="food-tag">Strawberry Leaf Tea</span>
+        <span class="food-tag">Tea (black, regular/decaf)</span>
+        <span class="food-tag">Thyme Tea</span>
+        <span class="food-tag">Valerian Tea</span>
+        <span class="food-tag">Vervain Tea</span>
+        <span class="food-tag">White Birch Tea</span>
+        <span class="food-tag">White Oak Bark Tea</span>
+        <span class="food-tag">Wine (red/white)</span>
+        <span class="food-tag">Worcestershire Sauce</span>
+        <span class="food-tag">Yarrow Tea</span>
+        <span class="food-tag">Yellow Dock Tea</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Aloe Tea</span>
+        <span class="food-tag">Coltsfoot Tea</span>
+        <span class="food-tag">Corn Silk Tea</span>
+        <span class="food-tag">Distilled Liquor</span>
+        <span class="food-tag">Fenugreek Tea</span>
+        <span class="food-tag">Gentian Tea</span>
+        <span class="food-tag">Hops Tea</span>
+        <span class="food-tag">Ketchup</span>
+        <span class="food-tag">Linden Tea</span>
+        <span class="food-tag">Red Clover Tea</span>
+        <span class="food-tag">Rhubarb Tea</span>
+        <span class="food-tag">Seltzer Water</span>
+        <span class="food-tag">Senna Tea</span>
+        <span class="food-tag">Shepherd's Purse Tea</span>
+        <span class="food-tag">Skullcap Tea</span>
+        <span class="food-tag">Soda (cola, diet, other)</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-b" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ B Cover</a></div>
+  </div>
+
+  <div class="category" id="b-herbs">
+    <div class="category-header"><span class="icon">🌿</span> Herbs & Spices</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Cayenne Pepper</span>
+        <span class="food-tag">Curry</span>
+        <span class="food-tag">Ginger</span>
+        <span class="food-tag">Horseradish</span>
+        <span class="food-tag">Parsley</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Agar</span>
+        <span class="food-tag">Allspice</span>
+        <span class="food-tag">Almond Extract</span>
+        <span class="food-tag">Anise</span>
+        <span class="food-tag">Arrowroot</span>
+        <span class="food-tag">Barley Malt</span>
+        <span class="food-tag">Basil</span>
+        <span class="food-tag">Bay Leaf</span>
+        <span class="food-tag">Brown Rice Syrup</span>
+        <span class="food-tag">Cardamom</span>
+        <span class="food-tag">Carob</span>
+        <span class="food-tag">Chervil</span>
+        <span class="food-tag">Chives</span>
+        <span class="food-tag">Chocolate</span>
+        <span class="food-tag">Cinnamon</span>
+        <span class="food-tag">Clove</span>
+        <span class="food-tag">Coriander</span>
+        <span class="food-tag">Corn Syrup</span>
+        <span class="food-tag">Cornstarch</span>
+        <span class="food-tag">Cream of Tartar</span>
+        <span class="food-tag">Cumin</span>
+        <span class="food-tag">Dill</span>
+        <span class="food-tag">Dulse</span>
+        <span class="food-tag">Honey</span>
+        <span class="food-tag">Kelp</span>
+        <span class="food-tag">Maple Syrup</span>
+        <span class="food-tag">Marjoram</span>
+        <span class="food-tag">Mint</span>
+        <span class="food-tag">Mis</span>
+        <span class="food-tag">Molasses</span>
+        <span class="food-tag">Mustard (dry)</span>
+        <span class="food-tag">Nutmeg</span>
+        <span class="food-tag">Oregano</span>
+        <span class="food-tag">Paprika</span>
+        <span class="food-tag">Pepper (peppercorn, red flakes)</span>
+        <span class="food-tag">Peppermint</span>
+        <span class="food-tag">Pimiento</span>
+        <span class="food-tag">Rice Syrup</span>
+        <span class="food-tag">Rosemary</span>
+        <span class="food-tag">Saffron</span>
+        <span class="food-tag">Sage</span>
+        <span class="food-tag">Salt</span>
+        <span class="food-tag">Savory</span>
+        <span class="food-tag">Soy Sauce</span>
+        <span class="food-tag">Spearmint</span>
+        <span class="food-tag">Sugar (brown/white)</span>
+        <span class="food-tag">Tamarind</span>
+        <span class="food-tag">Tapioca</span>
+        <span class="food-tag">Tarragon</span>
+        <span class="food-tag">Thyme</span>
+        <span class="food-tag">Turmeric</span>
+        <span class="food-tag">Vanilla</span>
+        <span class="food-tag">Vinegar (apple cider, balsamic, red wine, white)</span>
+        <span class="food-tag">Wintergreen</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Capers</span>
+        <span class="food-tag">Gelatin (plain)</span>
+        <span class="food-tag">Pepper (black ground, white)</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-b" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ B Cover</a></div>
+  </div>
+
+  <div class="category" id="b-supplements">
+    <div class="category-header"><span class="icon">💊</span> Supplements (per Dr. D'Adamo)</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Digestive Enzymes</span>
+        <span class="food-tag">Ginkgo Biloba</span>
+        <span class="food-tag">Ginseng</span>
+        <span class="food-tag">Licorice</span>
+        <span class="food-tag">Live Cell B Sprouted Greens</span>
+        <span class="food-tag">Magnesium</span>
+        <span class="food-tag">Methyl 12 Plus</span>
+        <span class="food-tag">Modified Citrus Pectin (MCP)</span>
+        <span class="food-tag">Nitricycle</span>
+        <span class="food-tag">Proberry 3</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-b" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ B Cover</a></div>
+  </div>
+</section>
+
+<!-- ==================== TYPE AB ==================== -->
+<section id="type-ab">
+  <div class="bt-cover bt-ab">
+    <h2>Type AB</h2>
+    <p class="tagline">"The Enigma" — The Modern Blood Type</p>
+  <div class="jump-buttons">
+    <a href="#ab-meats" class="jump-btn">🥩 Meats</a>
+    <a href="#ab-seafood" class="jump-btn">🐟 Seafood</a>
+    <a href="#ab-dairy" class="jump-btn">🥚 Dairy</a>
+    <a href="#ab-oils" class="jump-btn">🫒 Oils</a>
+    <a href="#ab-nuts" class="jump-btn">🥜 Nuts</a>
+    <a href="#ab-legumes" class="jump-btn">🫘 Legumes</a>
+    <a href="#ab-grains" class="jump-btn">🌾 Grains</a>
+    <a href="#ab-veg" class="jump-btn">🥬 Veggies</a>
+    <a href="#ab-fruits" class="jump-btn">🍎 Fruits</a>
+    <a href="#ab-beverages" class="jump-btn">🧃 Beverages</a>
+    <a href="#ab-herbs" class="jump-btn">🌿 Herbs</a>
+    <a href="#ab-supplements" class="jump-btn">💊 Supplements</a>
+  </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-num">~4%</div>
+<div class="stat-label">of US Population</div></div>
+      <div class="stat"><div class="stat-num">Mixed</div><div class="stat-label">Diet Profile</div></div>
+      <div class="stat"><div class="stat-num">Calming</div><div class="stat-label">Exercise</div></div>
+    </div>
+  <div class="bt-toggle">
+    <a href="#type-o" class="to-o">Type O</a>
+    <a href="#type-a" class="to-a">Type A</a>
+    <a href="#type-b" class="to-b">Type B</a>
+  </div>
+  </div>
+
+  <div class="intro-box">
+    <h3>📖 The Type AB Story</h3>
+    <p>Type AB is described as the youngest and rarest blood type, emerging less than 1,000 years ago. 
+    Dr. D'Adamo characterizes it as a genetic fusion of Types A and B — carrying both antigens but 
+    inheriting Type A's low stomach acid and Type B's tolerance for dairy. This combination makes Type AB 
+    uniquely suited to a mixed diet with an emphasis on seafood, tofu, cultured dairy, and green vegetables.</p>
+    <p>Because of low stomach acid, Type AB is advised to avoid large portions of red meat, caffeine, 
+    alcohol, and all smoked or cured meats. Dr. D'Adamo recommends smaller, more frequent meals and 
+    avoiding combining starches and proteins in the same meal for optimal digestion. Exercise should 
+    blend calming activities (yoga, tai chi) with moderate aerobic exercise (hiking, swimming, cycling).</p>
+    </div>
+
+  <div class="category" id="ab-meats">
+    <div class="category-header"><span class="icon">🥩</span> Meats & Poultry</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Lamb</span>
+        <span class="food-tag">Mutton</span>
+        <span class="food-tag">Rabbit</span>
+        <span class="food-tag">Turkey</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Liver</span>
+        <span class="food-tag">Pheasant</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Bacon</span>
+        <span class="food-tag">Beef (all)</span>
+        <span class="food-tag">Buffalo</span>
+        <span class="food-tag">Chicken</span>
+        <span class="food-tag">Cornish Hens</span>
+        <span class="food-tag">Duck</span>
+        <span class="food-tag">Goose</span>
+        <span class="food-tag">Ham</span>
+        <span class="food-tag">Heart</span>
+        <span class="food-tag">Partridge</span>
+        <span class="food-tag">Pork</span>
+        <span class="food-tag">Quail</span>
+        <span class="food-tag">Veal</span>
+        <span class="food-tag">Venison</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-ab" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ AB Cover</a></div>
+  </div>
+
+  <div class="category" id="ab-seafood">
+    <div class="category-header"><span class="icon">🐟</span> Seafood</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Albacore (Tuna)</span>
+        <span class="food-tag">Cod</span>
+        <span class="food-tag">Grouper</span>
+        <span class="food-tag">Hake</span>
+        <span class="food-tag">Mackerel</span>
+        <span class="food-tag">Mahi-Mahi</span>
+        <span class="food-tag">Monkfish</span>
+        <span class="food-tag">Ocean Perch</span>
+        <span class="food-tag">Pickerel</span>
+        <span class="food-tag">Pike</span>
+        <span class="food-tag">Porgy</span>
+        <span class="food-tag">Rainbow Trout</span>
+        <span class="food-tag">Red Snapper</span>
+        <span class="food-tag">Sailfish</span>
+        <span class="food-tag">Sardine</span>
+        <span class="food-tag">Sea Trout</span>
+        <span class="food-tag">Snail</span>
+        <span class="food-tag">Tuna</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Bluefish</span>
+        <span class="food-tag">Carp</span>
+        <span class="food-tag">Catfish</span>
+        <span class="food-tag">Caviar</span>
+        <span class="food-tag">Herring (fresh)</span>
+        <span class="food-tag">Mussels</span>
+        <span class="food-tag">Salmon</span>
+        <span class="food-tag">Scallop</span>
+        <span class="food-tag">Snapper</span>
+        <span class="food-tag">Squid (Calamari)</span>
+        <span class="food-tag">Swordfish</span>
+        <span class="food-tag">Tilefish</span>
+        <span class="food-tag">Weakfish</span>
+        <span class="food-tag">White Perch</span>
+        <span class="food-tag">Yellow Perch</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Anchovy</span>
+        <span class="food-tag">Barracuda</span>
+        <span class="food-tag">Bass</span>
+        <span class="food-tag">Beluga</span>
+        <span class="food-tag">Clam</span>
+        <span class="food-tag">Conch</span>
+        <span class="food-tag">Crab</span>
+        <span class="food-tag">Crayfish</span>
+        <span class="food-tag">Eel</span>
+        <span class="food-tag">Flounder</span>
+        <span class="food-tag">Frog</span>
+        <span class="food-tag">Gray Sole</span>
+        <span class="food-tag">Haddock</span>
+        <span class="food-tag">Halibut</span>
+        <span class="food-tag">Herring (pickled)</span>
+        <span class="food-tag">Lobster</span>
+        <span class="food-tag">Lox (Smoked Salmon)</span>
+        <span class="food-tag">Octopus</span>
+        <span class="food-tag">Oysters</span>
+        <span class="food-tag">Sea Bass</span>
+        <span class="food-tag">Shrimp</span>
+        <span class="food-tag">Striped Bass</span>
+        <span class="food-tag">Turtle</span>
+        <span class="food-tag">Yellowtail</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-ab" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ AB Cover</a></div>
+  </div>
+
+  <div class="category" id="ab-dairy">
+    <div class="category-header"><span class="icon">🥚</span> Eggs & Dairy</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Cottage Cheese</span>
+        <span class="food-tag">Eggs</span>
+        <span class="food-tag">Farmer Cheese</span>
+        <span class="food-tag">Feta</span>
+        <span class="food-tag">Goat Cheese</span>
+        <span class="food-tag">Goat Milk</span>
+        <span class="food-tag">Kefir</span>
+        <span class="food-tag">Mozzarella</span>
+        <span class="food-tag">Non-Fat Sour Cream</span>
+        <span class="food-tag">Ricotta</span>
+        <span class="food-tag">Yogurt (all)</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Casein</span>
+        <span class="food-tag">Cheddar</span>
+        <span class="food-tag">Colby</span>
+        <span class="food-tag">Cream Cheese</span>
+        <span class="food-tag">Edam</span>
+        <span class="food-tag">Emmenthal</span>
+        <span class="food-tag">Gouda</span>
+        <span class="food-tag">Gruyère</span>
+        <span class="food-tag">Jarlsberg</span>
+        <span class="food-tag">Monterey Jack</span>
+        <span class="food-tag">Munster</span>
+        <span class="food-tag">Neufchâtel</span>
+        <span class="food-tag">Skim/2% Milk</span>
+        <span class="food-tag">Soy Cheese</span>
+        <span class="food-tag">Soy Milk</span>
+        <span class="food-tag">String Cheese</span>
+        <span class="food-tag">Swiss</span>
+        <span class="food-tag">Whey</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">American Cheese</span>
+        <span class="food-tag">Blue Cheese</span>
+        <span class="food-tag">Brie</span>
+        <span class="food-tag">Butter</span>
+        <span class="food-tag">Buttermilk</span>
+        <span class="food-tag">Camembert</span>
+        <span class="food-tag">Ice Cream</span>
+        <span class="food-tag">Parmesan</span>
+        <span class="food-tag">Provolone</span>
+        <span class="food-tag">Sherbet</span>
+        <span class="food-tag">Whole Milk</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-ab" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ AB Cover</a></div>
+  </div>
+
+  <div class="category" id="ab-oils">
+    <div class="category-header"><span class="icon">🫒</span> Oils & Fats</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Olive Oil</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Canola Oil</span>
+        <span class="food-tag">Cod Liver Oil</span>
+        <span class="food-tag">Flaxseed (Linseed) Oil</span>
+        <span class="food-tag">Peanut Oil</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Coconut Oil</span>
+        <span class="food-tag">Corn Oil</span>
+        <span class="food-tag">Cottonseed Oil</span>
+        <span class="food-tag">Safflower Oil</span>
+        <span class="food-tag">Sesame Oil</span>
+        <span class="food-tag">Sunflower Oil</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-ab" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ AB Cover</a></div>
+  </div>
+
+  <div class="category" id="ab-nuts">
+    <div class="category-header"><span class="icon">🥜</span> Nuts & Seeds</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Chestnuts</span>
+        <span class="food-tag">Peanut Butter</span>
+        <span class="food-tag">Peanuts</span>
+        <span class="food-tag">Walnuts</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Almond Butter</span>
+        <span class="food-tag">Almonds</span>
+        <span class="food-tag">Brazil Nuts</span>
+        <span class="food-tag">Cashews</span>
+        <span class="food-tag">Litchi</span>
+        <span class="food-tag">Macadamia</span>
+        <span class="food-tag">Pecans</span>
+        <span class="food-tag">Pine Nuts</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Filberts</span>
+        <span class="food-tag">Poppy Seeds</span>
+        <span class="food-tag">Pumpkin Seeds</span>
+        <span class="food-tag">Sesame Butter (Tahini)</span>
+        <span class="food-tag">Sesame Seeds</span>
+        <span class="food-tag">Sunflower Butter</span>
+        <span class="food-tag">Sunflower Seeds</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-ab" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ AB Cover</a></div>
+  </div>
+
+  <div class="category" id="ab-legumes">
+    <div class="category-header"><span class="icon">🫘</span> Beans & Legumes</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Green Lentils</span>
+        <span class="food-tag">Navy Beans</span>
+        <span class="food-tag">Pinto Beans</span>
+        <span class="food-tag">Red Beans</span>
+        <span class="food-tag">Red Soy Beans</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Broad Beans</span>
+        <span class="food-tag">Cannellini</span>
+        <span class="food-tag">Copper Beans</span>
+        <span class="food-tag">Green Beans</span>
+        <span class="food-tag">Green Peas</span>
+        <span class="food-tag">Jicama</span>
+        <span class="food-tag">Northern Beans</span>
+        <span class="food-tag">Pea Pods</span>
+        <span class="food-tag">Red Lentils</span>
+        <span class="food-tag">Snap Beans</span>
+        <span class="food-tag">String Beans</span>
+        <span class="food-tag">Tamarind</span>
+        <span class="food-tag">White Beans</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Adzuki Beans</span>
+        <span class="food-tag">Azuki Beans</span>
+        <span class="food-tag">Black Beans</span>
+        <span class="food-tag">Black-Eyed Peas</span>
+        <span class="food-tag">Fava Beans</span>
+        <span class="food-tag">Garbanzo (Chickpeas)</span>
+        <span class="food-tag">Kidney Beans</span>
+        <span class="food-tag">Lima Beans</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-ab" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ AB Cover</a></div>
+  </div>
+
+  <div class="category" id="ab-grains">
+    <div class="category-header"><span class="icon">🌾</span> Grains, Cereals & Pasta</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">100% Rye Bread</span>
+        <span class="food-tag">Brown Rice Bread</span>
+        <span class="food-tag">Essene Bread</span>
+        <span class="food-tag">Ezekiel Bread</span>
+        <span class="food-tag">Fin Crisp</span>
+        <span class="food-tag">Millet</span>
+        <span class="food-tag">Oat Bran</span>
+        <span class="food-tag">Oat Flour</span>
+        <span class="food-tag">Oatmeal</span>
+        <span class="food-tag">Rice (basmati, brown, white, wild)</span>
+        <span class="food-tag">Rice (puffed)</span>
+        <span class="food-tag">Rice Bran</span>
+        <span class="food-tag">Rice Cakes</span>
+        <span class="food-tag">Rice Flour</span>
+        <span class="food-tag">Rye Crisps</span>
+        <span class="food-tag">Rye Flour</span>
+        <span class="food-tag">Ryvita</span>
+        <span class="food-tag">Soy Flour Bread</span>
+        <span class="food-tag">Spelt</span>
+        <span class="food-tag">Sprouted Wheat Bread</span>
+        <span class="food-tag">Sprouted Wheat Flour</span>
+        <span class="food-tag">Wasa Bread</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Amaranth</span>
+        <span class="food-tag">Bagels</span>
+        <span class="food-tag">Barley</span>
+        <span class="food-tag">Bulgur</span>
+        <span class="food-tag">Couscous</span>
+        <span class="food-tag">Cream of Rice</span>
+        <span class="food-tag">Cream of Wheat</span>
+        <span class="food-tag">Durum Wheat</span>
+        <span class="food-tag">Durum Wheat Flour</span>
+        <span class="food-tag">Familia</span>
+        <span class="food-tag">Farina</span>
+        <span class="food-tag">Gluten-Free Bread</span>
+        <span class="food-tag">Graham Flour</span>
+        <span class="food-tag">Granola</span>
+        <span class="food-tag">Grape-Nuts</span>
+        <span class="food-tag">High-Protein Bread</span>
+        <span class="food-tag">Matzos</span>
+        <span class="food-tag">Multi-Grain Bread</span>
+        <span class="food-tag">Oat Bran Muffins</span>
+        <span class="food-tag">Pumpernickel</span>
+        <span class="food-tag">Quinoa</span>
+        <span class="food-tag">Semolina Pasta</span>
+        <span class="food-tag">Seven-Grain</span>
+        <span class="food-tag">Shredded Wheat</span>
+        <span class="food-tag">Soy Flakes</span>
+        <span class="food-tag">Soy Granules</span>
+        <span class="food-tag">Spelt Bread</span>
+        <span class="food-tag">Spinach Pasta</span>
+        <span class="food-tag">Wheat Bran</span>
+        <span class="food-tag">Wheat Bran Muffins</span>
+        <span class="food-tag">Wheat Germ</span>
+        <span class="food-tag">Whole Wheat Bread</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Artichoke Pasta</span>
+        <span class="food-tag">Buckwheat</span>
+        <span class="food-tag">Corn Muffins</span>
+        <span class="food-tag">Cornflakes</span>
+        <span class="food-tag">Cornmeal</span>
+        <span class="food-tag">Kamut</span>
+        <span class="food-tag">Kasha</span>
+        <span class="food-tag">Soba Noodles</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-ab" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ AB Cover</a></div>
+  </div>
+
+  <div class="category" id="ab-veg">
+    <div class="category-header"><span class="icon">🥬</span> Vegetables</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Alfalfa Sprouts</span>
+        <span class="food-tag">Beet Greens</span>
+        <span class="food-tag">Beets</span>
+        <span class="food-tag">Broccoli</span>
+        <span class="food-tag">Cauliflower</span>
+        <span class="food-tag">Celery</span>
+        <span class="food-tag">Collard Greens</span>
+        <span class="food-tag">Cucumber</span>
+        <span class="food-tag">Dandelion</span>
+        <span class="food-tag">Eggplant</span>
+        <span class="food-tag">Garlic</span>
+        <span class="food-tag">Kale</span>
+        <span class="food-tag">Mustard Greens</span>
+        <span class="food-tag">Parsley</span>
+        <span class="food-tag">Parsnips</span>
+        <span class="food-tag">Sweet Potatoes</span>
+        <span class="food-tag">Tempeh</span>
+        <span class="food-tag">Tofu</span>
+        <span class="food-tag">Yams</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Arugula</span>
+        <span class="food-tag">Asparagus</span>
+        <span class="food-tag">Bamboo Shoots</span>
+        <span class="food-tag">Bok Choy</span>
+        <span class="food-tag">Brussels Sprouts</span>
+        <span class="food-tag">Cabbage (Chinese, red, white)</span>
+        <span class="food-tag">Caraway</span>
+        <span class="food-tag">Carrots</span>
+        <span class="food-tag">Chervil</span>
+        <span class="food-tag">Chicory</span>
+        <span class="food-tag">Coriander</span>
+        <span class="food-tag">Daikon</span>
+        <span class="food-tag">Endive</span>
+        <span class="food-tag">Escarole</span>
+        <span class="food-tag">Fennel</span>
+        <span class="food-tag">Fiddlehead Ferns</span>
+        <span class="food-tag">Ginger</span>
+        <span class="food-tag">Horseradish</span>
+        <span class="food-tag">Kohlrabi</span>
+        <span class="food-tag">Leek</span>
+        <span class="food-tag">Lettuce (all)</span>
+        <span class="food-tag">Mushrooms (domestic, enoki, portobello, oyster, tree)</span>
+        <span class="food-tag">Okra</span>
+        <span class="food-tag">Olives (green, Greek, Spanish)</span>
+        <span class="food-tag">Onions (all)</span>
+        <span class="food-tag">Potatoes (red, white)</span>
+        <span class="food-tag">Pumpkin</span>
+        <span class="food-tag">Radicchio</span>
+        <span class="food-tag">Rappini</span>
+        <span class="food-tag">Rutabaga</span>
+        <span class="food-tag">Scallion</span>
+        <span class="food-tag">Seaweed</span>
+        <span class="food-tag">Shallots</span>
+        <span class="food-tag">Snow Peas</span>
+        <span class="food-tag">Spinach</span>
+        <span class="food-tag">Squash (all)</span>
+        <span class="food-tag">Swiss Chard</span>
+        <span class="food-tag">Tomato</span>
+        <span class="food-tag">Turnips</span>
+        <span class="food-tag">Water Chestnut</span>
+        <span class="food-tag">Watercress</span>
+        <span class="food-tag">Zucchini</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Artichoke</span>
+        <span class="food-tag">Avocado</span>
+        <span class="food-tag">Black Olives</span>
+        <span class="food-tag">Corn</span>
+        <span class="food-tag">Lima Beans</span>
+        <span class="food-tag">Mung Sprouts</span>
+        <span class="food-tag">Mushrooms (abalone, shiitake)</span>
+        <span class="food-tag">Peppers (all)</span>
+        <span class="food-tag">Radish Sprouts</span>
+        <span class="food-tag">Radishes</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-ab" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ AB Cover</a></div>
+  </div>
+
+  <div class="category" id="ab-fruits">
+    <div class="category-header"><span class="icon">🍎</span> Fruits</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Cherries</span>
+        <span class="food-tag">Cranberries</span>
+        <span class="food-tag">Figs</span>
+        <span class="food-tag">Gooseberries</span>
+        <span class="food-tag">Grapefruit</span>
+        <span class="food-tag">Grapes (black, Concord, green, red)</span>
+        <span class="food-tag">Kiwi</span>
+        <span class="food-tag">Lemons</span>
+        <span class="food-tag">Loganberries</span>
+        <span class="food-tag">Pineapple</span>
+        <span class="food-tag">Plums (dark, green, red)</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Apples</span>
+        <span class="food-tag">Apricots</span>
+        <span class="food-tag">Blackberries</span>
+        <span class="food-tag">Blueberries</span>
+        <span class="food-tag">Boysenberries</span>
+        <span class="food-tag">Currants</span>
+        <span class="food-tag">Dates</span>
+        <span class="food-tag">Elderberries</span>
+        <span class="food-tag">Kumquat</span>
+        <span class="food-tag">Limes</span>
+        <span class="food-tag">Melons (all)</span>
+        <span class="food-tag">Nectarines</span>
+        <span class="food-tag">Papayas</span>
+        <span class="food-tag">Peaches</span>
+        <span class="food-tag">Pears</span>
+        <span class="food-tag">Plantains</span>
+        <span class="food-tag">Prunes</span>
+        <span class="food-tag">Raisins</span>
+        <span class="food-tag">Raspberries</span>
+        <span class="food-tag">Strawberries</span>
+        <span class="food-tag">Tangerines</span>
+        <span class="food-tag">Watermelon</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Bananas</span>
+        <span class="food-tag">Coconuts</span>
+        <span class="food-tag">Guava</span>
+        <span class="food-tag">Mangoes</span>
+        <span class="food-tag">Oranges</span>
+        <span class="food-tag">Persimmons</span>
+        <span class="food-tag">Pomegranates</span>
+        <span class="food-tag">Prickly Pear</span>
+        <span class="food-tag">Rhubarb</span>
+        <span class="food-tag">Star Fruit</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-ab" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ AB Cover</a></div>
+  </div>
+
+  <div class="category" id="ab-beverages">
+    <div class="category-header"><span class="icon">🧃</span> Juices, Beverages & Condiments</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Black Cherry Juice</span>
+        <span class="food-tag">Cabbage Juice</span>
+        <span class="food-tag">Carrot Juice</span>
+        <span class="food-tag">Celery Juice</span>
+        <span class="food-tag">Coffee (regular/decaf)</span>
+        <span class="food-tag">Cranberry Juice</span>
+        <span class="food-tag">Grape Juice</span>
+        <span class="food-tag">Green Tea</span>
+        <span class="food-tag">Papaya Juice</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Apple Cider</span>
+        <span class="food-tag">Apricot Juice</span>
+        <span class="food-tag">Beer</span>
+        <span class="food-tag">Club Soda</span>
+        <span class="food-tag">Cucumber Juice</span>
+        <span class="food-tag">Grapefruit Juice</span>
+        <span class="food-tag">Jam/Jelly (acceptable fruits)</span>
+        <span class="food-tag">Mayonnaise</span>
+        <span class="food-tag">Mustard</span>
+        <span class="food-tag">Pineapple Juice</span>
+        <span class="food-tag">Prune Juice</span>
+        <span class="food-tag">Salad Dressing (low-fat)</span>
+        <span class="food-tag">Seltzer Water</span>
+        <span class="food-tag">Vegetable Juice</span>
+        <span class="food-tag">Wine (red/white)</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Black Tea (regular/decaf)</span>
+        <span class="food-tag">Colas</span>
+        <span class="food-tag">Diet Soda</span>
+        <span class="food-tag">Distilled Liquor</span>
+        <span class="food-tag">Guava Juice</span>
+        <span class="food-tag">Ketchup</span>
+        <span class="food-tag">Mango Juice</span>
+        <span class="food-tag">Orange Juice</span>
+        <span class="food-tag">Pickles (all)</span>
+        <span class="food-tag">Relish</span>
+        <span class="food-tag">Worcestershire Sauce</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-ab" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ AB Cover</a></div>
+  </div>
+
+  <div class="category" id="ab-herbs">
+    <div class="category-header"><span class="icon">🌿</span> Herbs, Spices & Herbal Teas</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Alfalfa Tea</span>
+        <span class="food-tag">Burdock Tea</span>
+        <span class="food-tag">Chamomile Tea</span>
+        <span class="food-tag">Curry</span>
+        <span class="food-tag">Echinacea Tea</span>
+        <span class="food-tag">Garlic</span>
+        <span class="food-tag">Ginger Tea</span>
+        <span class="food-tag">Ginseng Tea</span>
+        <span class="food-tag">Green Tea</span>
+        <span class="food-tag">Hawthorn Tea</span>
+        <span class="food-tag">Horseradish</span>
+        <span class="food-tag">Licorice Root Tea</span>
+        <span class="food-tag">Miso</span>
+        <span class="food-tag">Parsley</span>
+        <span class="food-tag">Rose Hips Tea</span>
+        <span class="food-tag">Strawberry Leaf Tea</span>
+      </div>
+    </div>
+    <div class="food-group moderate">
+    <h4>◐ Moderate</h4>
+    <div class="food-tags">
+        <span class="food-tag">Agar</span>
+        <span class="food-tag">Allspice</span>
+        <span class="food-tag">Almond Extract</span>
+        <span class="food-tag">Anise</span>
+        <span class="food-tag">Arrowroot</span>
+        <span class="food-tag">Barley Malt</span>
+        <span class="food-tag">Basil</span>
+        <span class="food-tag">Bay Leaf</span>
+        <span class="food-tag">Brown Rice Syrup</span>
+        <span class="food-tag">Cardamom</span>
+        <span class="food-tag">Carob</span>
+        <span class="food-tag">Catnip Tea</span>
+        <span class="food-tag">Cayenne Tea</span>
+        <span class="food-tag">Chervil</span>
+        <span class="food-tag">Chickweed Tea</span>
+        <span class="food-tag">Chives</span>
+        <span class="food-tag">Chocolate</span>
+        <span class="food-tag">Cinnamon</span>
+        <span class="food-tag">Clove</span>
+        <span class="food-tag">Coriander</span>
+        <span class="food-tag">Cornstarch</span>
+        <span class="food-tag">Cream of Tartar</span>
+        <span class="food-tag">Cumin</span>
+        <span class="food-tag">Dandelion Tea</span>
+        <span class="food-tag">Dill</span>
+        <span class="food-tag">Dong Quai Tea</span>
+        <span class="food-tag">Dulse</span>
+        <span class="food-tag">Elder Tea</span>
+        <span class="food-tag">Goldenseal Tea</span>
+        <span class="food-tag">Honey</span>
+        <span class="food-tag">Horehound Tea</span>
+        <span class="food-tag">Kelp</span>
+        <span class="food-tag">Maple Syrup</span>
+        <span class="food-tag">Marjoram</span>
+        <span class="food-tag">Mint</span>
+        <span class="food-tag">Molasses</span>
+        <span class="food-tag">Mulberry Tea</span>
+        <span class="food-tag">Mullein Tea</span>
+        <span class="food-tag">Mustard (dry)</span>
+        <span class="food-tag">Nutmeg</span>
+        <span class="food-tag">Oregano</span>
+        <span class="food-tag">Paprika</span>
+        <span class="food-tag">Parsley Tea</span>
+        <span class="food-tag">Peppermint</span>
+        <span class="food-tag">Peppermint Tea</span>
+        <span class="food-tag">Pimiento</span>
+        <span class="food-tag">Raspberry Leaf Tea</span>
+        <span class="food-tag">Rice Syrup</span>
+        <span class="food-tag">Rosemary</span>
+        <span class="food-tag">Saffron</span>
+        <span class="food-tag">Sage</span>
+        <span class="food-tag">Salt</span>
+        <span class="food-tag">Sarsaparilla Tea</span>
+        <span class="food-tag">Savory</span>
+        <span class="food-tag">Slippery Elm Tea</span>
+        <span class="food-tag">Soy Sauce</span>
+        <span class="food-tag">Spearmint</span>
+        <span class="food-tag">Spearmint Tea</span>
+        <span class="food-tag">Sugar (brown/white)</span>
+        <span class="food-tag">Tamarind</span>
+        <span class="food-tag">Tapioca</span>
+        <span class="food-tag">Tarragon</span>
+        <span class="food-tag">Thyme</span>
+        <span class="food-tag">Thyme Tea</span>
+        <span class="food-tag">Turmeric</span>
+        <span class="food-tag">Valerian Tea</span>
+        <span class="food-tag">Vanilla</span>
+        <span class="food-tag">Vervain Tea</span>
+        <span class="food-tag">Vinegar (apple cider, balsamic, red wine, white)</span>
+        <span class="food-tag">White Birch Tea</span>
+        <span class="food-tag">White Oak Bark Tea</span>
+        <span class="food-tag">Yarrow Tea</span>
+        <span class="food-tag">Yellow Dock Tea</span>
+      </div>
+    </div>
+    <div class="food-group noxious">
+    <h4>✕ Noxious</h4>
+    <div class="food-tags">
+        <span class="food-tag">Aloe Tea</span>
+        <span class="food-tag">Capers</span>
+        <span class="food-tag">Coltsfoot Tea</span>
+        <span class="food-tag">Corn Silk Tea</span>
+        <span class="food-tag">Fenugreek Tea</span>
+        <span class="food-tag">Gelatin (plain)</span>
+        <span class="food-tag">Gentian Tea</span>
+        <span class="food-tag">Hops Tea</span>
+        <span class="food-tag">Linden Tea</span>
+        <span class="food-tag">Mullein Tea</span>
+        <span class="food-tag">Pepper (black, white, cayenne, red flakes)</span>
+        <span class="food-tag">Red Clover Tea</span>
+        <span class="food-tag">Rhubarb Tea</span>
+        <span class="food-tag">Senna Tea</span>
+        <span class="food-tag">Shepherd's Purse Tea</span>
+        <span class="food-tag">Skullcap Tea</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-ab" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ AB Cover</a></div>
+  </div>
+
+  <div class="category" id="ab-supplements">
+    <div class="category-header"><span class="icon">💊</span> Supplements (per Dr. D'Adamo)</div>
+    <div class="food-group optimal">
+    <h4>✓ Optimal</h4>
+    <div class="food-tags">
+        <span class="food-tag">Bromelain</span>
+        <span class="food-tag">Chamomile</span>
+        <span class="food-tag">Deflect AB</span>
+        <span class="food-tag">Echinacea</span>
+        <span class="food-tag">Hawthorn</span>
+        <span class="food-tag">Live Cell AB Sprouted Greens</span>
+        <span class="food-tag">Methyl 12 Plus</span>
+        <span class="food-tag">Nitricycle</span>
+        <span class="food-tag">Proberry 3</span>
+        <span class="food-tag">Quercetin</span>
+        <span class="food-tag">Valerian Root</span>
+        <span class="food-tag">Vitamin C</span>
+        <span class="food-tag">Zinc</span>
+      </div>
+    </div>
+  
+    <div style="text-align:center; margin-top:10px; padding-top:8px; border-top:1px solid #f0f0f0;"><a href="#type-ab" style="display:inline-block; padding:3px 12px; background:#f5f5f5; color:#888; text-decoration:none; border-radius:14px; font-size:0.68rem; font-weight:500;">↑ AB Cover</a></div>
+  </div>
+</section>
+
+<!-- Footer -->
+
+<!-- Fine Print Disclaimer -->
+<div style="text-align:center; padding: 20px; color: #9e9e9e; font-size: 0.7rem; line-height: 1.5; max-width: 700px; margin: 0 auto;">
+  <p><strong>Disclaimer:</strong> This ebook is a reference guide compiled from <em>Eat Right 4 Your Type</em> by Dr. Peter J. D'Adamo, N.D., for informational and educational purposes only. It is not intended as medical advice, nor as a substitute for professional dietary or medical consultation. Individual nutritional needs vary. Please consult a qualified healthcare provider before making any significant changes to your diet or lifestyle.</p>
+</div>
+
+</div>
+</body>
+</html>
