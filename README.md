@@ -46,4 +46,4 @@ This ebook is a reference guide compiled from *Eat Right 4 Your Type* by Dr. Pet
 
 ---
 
-**W.U.T.?** = *What's Up, Type?*
+**W.U.T.?** = *What's Ur Type?*
