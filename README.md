@@ -40,6 +40,17 @@ Foods are color-coded:
 
 This ebook is a single HTML file with no external dependencies. Save it to your phone and it works in airplane mode — perfect for checking at restaurants!
 
+## Add to Home Screen
+
+Tap the small 🩸 button on the top-right of the cover for one-tap instructions to add W.U.T.? to your Home Screen on iPhone (Safari) or Android (Chrome), so it opens like an app icon.
+
+## Tap Any Food for Details
+
+Every food, drink, herb, spice, and supplement tag is tappable. Tapping one opens a card with:
+- **What It Is** — a plain-language definition
+- **Why It's In This Category** — the general reasoning behind its Optimal/Neutral/Avoid placement for that blood type
+- **Best Way To Consume** (Optimal items only) — a tip for how to prepare or eat it to get the most benefit
+
 ## Disclaimer
 
 This ebook is a reference guide compiled from *Eat Right 4 Your Type* by Dr. Peter J. D'Adamo, N.D., for informational and educational purposes only. It is not intended as medical advice. Please consult a qualified healthcare provider before making any significant changes to your diet or lifestyle.
