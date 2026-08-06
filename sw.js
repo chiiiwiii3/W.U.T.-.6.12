@@ -1,7 +1,7 @@
 // Service worker with offline caching so the app (and the ebook content
 // embedded inside index.html) works with no network connection.
 
-const CACHE_NAME = 'wut-cache-v2';
+const CACHE_NAME = 'wut-cache-v3';
 const CORE_ASSETS = [
   './',
   './index.html',
